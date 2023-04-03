@@ -1,6 +1,6 @@
 # YAGRI
 
-A new Flutter project.
+YAGRI APP
 
 ## Getting Started
 
