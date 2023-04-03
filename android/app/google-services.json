@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "847079387815",
+    "project_id": "agritun-fbd20",
+    "storage_bucket": "agritun-fbd20.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847079387815:android:43a566ad91d7adcc142182",
+        "android_client_info": {
+          "package_name": "app.yagri.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847079387815-jfusa3ursnf1dkf0bkpqc7849ckak5a8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.yagri.app",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "847079387815-tbug4j18phgl7hq91h4p1s6895slc4j8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAziwhqZCrtS6gTrsNkrp9jjAZWynb2Szc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "847079387815-tbug4j18phgl7hq91h4p1s6895slc4j8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "847079387815-98bd0e82hmafki311tqena94ocenrn8n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "app.yagri.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
