@@ -12,6 +12,7 @@ For projects with Firestore integration, you must first run the following comman
 
 ```
 flutter pub get
+
 ```
 
 This command creates the generated files that parse each Record from Firestore into a schema object.
