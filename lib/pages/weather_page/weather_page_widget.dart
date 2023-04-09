@@ -1225,7 +1225,7 @@ class _WeatherPageWidgetState extends State<WeatherPageWidget> {
                                                                               stackWeatherResponse.jsonBody,
                                                                             ) as List)
                                                                                 .map<String>((s) => s.toString())
-                                                                                .toList()!
+                                                                                .toList()
                                                                                 .map((e) => e.toString())
                                                                                 .toList(),
                                                                             0),
