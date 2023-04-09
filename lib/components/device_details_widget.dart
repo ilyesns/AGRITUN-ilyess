@@ -515,76 +515,6 @@ class _DeviceDetailsWidgetState extends State<DeviceDetailsWidget> {
                                                                               .topic,
                                                                       cmnd:
                                                                           powerItem);
-                                                              if ((_model
-                                                                      .apiResult3rp
-                                                                      ?.succeeded ??
-                                                                  true)) {
-                                                                /*logFirebaseEvent(
-                                                                    'Button_show_snack_bar');
-                                                                ScaffoldMessenger.of(
-                                                                        context)
-                                                                    .showSnackBar(
-                                                                  SnackBar(
-                                                                    content:
-                                                                        Text(
-                                                                      'OFF',
-                                                                      style:
-                                                                          TextStyle(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryText,
-                                                                      ),
-                                                                    ),
-                                                                    duration: Duration(
-                                                                        milliseconds:
-                                                                            4000),
-                                                                    backgroundColor:
-                                                                        Color(
-                                                                            0x00000000),
-                                                                  ),
-                                                                );*/
-                                                                logFirebaseEvent(
-                                                                    'Button_trigger_push_notification');
-                                                                triggerPushNotification(
-                                                                    notificationTitle:
-                                                                        powerItem,
-                                                                    notificationText:
-                                                                        'OFF',
-                                                                    notificationSound:
-                                                                        'default',
-                                                                    userRefs: [
-                                                                      currentUserReference!
-                                                                    ],
-                                                                    initialPageName:
-                                                                        'listdevice',
-                                                                    parameterData: {},
-                                                                    snDevice:
-                                                                        containerYdRecord
-                                                                            .snDevice,
-                                                                    power:
-                                                                        powerItem);
-                                                              } else {
-                                                                // ScaffoldMessenger.of(
-                                                                //         context)
-                                                                //     .showSnackBar(
-                                                                //   SnackBar(
-                                                                //     content:
-                                                                //         Text(
-                                                                //       'error',
-                                                                //       style:
-                                                                //           TextStyle(
-                                                                //         color: FlutterFlowTheme.of(context)
-                                                                //             .primaryText,
-                                                                //       ),
-                                                                //     ),
-                                                                //     duration: Duration(
-                                                                //         milliseconds:
-                                                                //             4000),
-                                                                //     backgroundColor:
-                                                                //         Color(
-                                                                //             0x00000000),
-                                                                //   ),
-                                                                // );
-                                                              }
 
                                                               setState(() {});
                                                             },
@@ -682,7 +612,8 @@ class _DeviceDetailsWidgetState extends State<DeviceDetailsWidget> {
                                                                             0x00000000),
                                                                   ),
                                                                 );*/
-                                                                logFirebaseEvent(
+
+                                                                /*  logFirebaseEvent(
                                                                     'Button_trigger_push_notification');
                                                                 triggerPushNotification(
                                                                     notificationTitle:
@@ -701,7 +632,7 @@ class _DeviceDetailsWidgetState extends State<DeviceDetailsWidget> {
                                                                         containerYdRecord
                                                                             .snDevice,
                                                                     power:
-                                                                        powerItem);
+                                                                        powerItem);*/
                                                               } else {
                                                                 /*    logFirebaseEvent(
                                                                     'Button_show_snack_bar');

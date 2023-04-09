@@ -10,7 +10,9 @@ class YagriFirebaseUser {
 }
 
 YagriFirebaseUser? currentUser;
+
 bool get loggedIn => currentUser?.loggedIn ?? false;
+
 Stream<YagriFirebaseUser> yagriFirebaseUserStream() => FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn

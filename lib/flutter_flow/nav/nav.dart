@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
+import '../../auth/auth_util.dart';
 import '../flutter_flow_theme.dart';
 import '../../backend/backend.dart';
 
@@ -39,6 +40,7 @@ class AppStateNotifier extends ChangeNotifier {
   bool get loggedIn => user?.loggedIn ?? false;
   bool get initiallyLoggedIn => initialUser?.loggedIn ?? false;
   bool get shouldRedirect => loggedIn && _redirectLocation != null;
+  bool get currrentUserEmailVerif => currentUserEmailVerified;
 
   String getRedirectLocation() => _redirectLocation!;
   bool hasRedirect() => _redirectLocation != null;
@@ -77,8 +79,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : LoginPageWidget(),
+          builder: (context, _) {
+            if (appStateNotifier.loggedIn &&
+                appStateNotifier.currrentUserEmailVerif &&
+                (currentUserDisplayName == null ||
+                    currentUserDisplayName == '')) {
+              return CompleteProfileWidget();
+            } else if (appStateNotifier.loggedIn &&
+                appStateNotifier.currrentUserEmailVerif) {
+              return NavBarPage();
+            } else {
+              return LoginPageWidget();
+            }
+          },
           routes: [
             FFRoute(
               name: 'loginPage',

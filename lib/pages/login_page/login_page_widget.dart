@@ -1,3 +1,5 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
+
 import '/auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -444,22 +446,36 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                             );
                                                             if (user == null) {
                                                               return;
-                                                            }
-
-                                                            if (currentUserDisplayName ==
-                                                                    null ||
-                                                                currentUserDisplayName ==
-                                                                    '') {
-                                                              logFirebaseEvent(
-                                                                  'ButtonEmail-Login_navigate_to');
-
-                                                              context
-                                                                  .goNamedAuth(
-                                                                'completeProfile',
-                                                                mounted,
-                                                                ignoreRedirect:
-                                                                    true,
-                                                              );
+                                                            } else if (!currentUserEmailVerified) {
+                                                              AwesomeDialog(
+                                                                context:
+                                                                    context,
+                                                                dialogType:
+                                                                    DialogType
+                                                                        .infoReverse,
+                                                                animType:
+                                                                    AnimType
+                                                                        .scale,
+                                                                title: FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                        'd2tgohj2' /* Email verification */
+                                                                        ),
+                                                                desc: FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                        'd2tgohj3' /* please check your email to verify your account before sign in */
+                                                                        ),
+                                                                autoHide:
+                                                                    const Duration(
+                                                                        seconds:
+                                                                            5),
+                                                                onDismissCallback:
+                                                                    (type) {
+                                                                  debugPrint(
+                                                                      'Dialog Dissmiss from callback $type');
+                                                                },
+                                                              ).show();
                                                             } else {
                                                               logFirebaseEvent(
                                                                   'ButtonEmail-Login_navigate_to');
@@ -471,6 +487,22 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                 ignoreRedirect:
                                                                     true,
                                                               );
+                                                            }
+                                                            if (currentUserEmailVerified &&
+                                                                (currentUserDisplayName ==
+                                                                        null ||
+                                                                    currentUserDisplayName ==
+                                                                        '')) {
+                                                              context
+                                                                  .goNamedAuth(
+                                                                'completeProfile',
+                                                                mounted,
+                                                                ignoreRedirect:
+                                                                    true,
+                                                              );
+                                                              GoRouter.of(
+                                                                      context)
+                                                                  .clearRedirectLocation();
                                                             }
                                                           },
                                                           text: FFLocalizations
@@ -1317,18 +1349,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                               await sendEmailVerification();
                                                               logFirebaseEvent(
                                                                   'ButtonEmail_navigate_to');
-                                                              if (Navigator.of(
-                                                                      context)
-                                                                  .canPop()) {
-                                                                context.pop();
-                                                              }
-                                                              context
-                                                                  .pushNamedAuth(
-                                                                'completeProfile',
-                                                                mounted,
-                                                                ignoreRedirect:
-                                                                    true,
-                                                              );
                                                             } else {
                                                               logFirebaseEvent(
                                                                   'ButtonEmail_show_snack_bar');
@@ -1356,6 +1376,38 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                           0xFFFF2B2B),
                                                                 ),
                                                               );
+                                                            }
+                                                            if (!currentUserEmailVerified) {
+                                                              AwesomeDialog(
+                                                                btnOkOnPress:
+                                                                    () {
+                                                                  context.goNamed(
+                                                                      'loginPage');
+                                                                },
+                                                                context:
+                                                                    context,
+                                                                dialogType:
+                                                                    DialogType
+                                                                        .infoReverse,
+                                                                animType:
+                                                                    AnimType
+                                                                        .scale,
+                                                                title: FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                        'd2tgohj2' /* Email verification */
+                                                                        ),
+                                                                desc: FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                        'd2tgohj3' /* please check your email to verify your account before sign in */
+                                                                        ),
+                                                                onDismissCallback:
+                                                                    (type) {
+                                                                  debugPrint(
+                                                                      'Dialog Dissmiss from callback $type');
+                                                                },
+                                                              ).show();
                                                             }
                                                           },
                                                           text: FFLocalizations

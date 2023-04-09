@@ -208,6 +208,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'عنوان',
       'fr': 'Adresse',
     },
+    'd2tgohj2': {
+      'en': 'Email verification',
+      'ar': 'تأكيد بواسطة البريد الالكتروني',
+      'fr': 'Vérification de l\'E-mail',
+    },
+    'd2tgohj3': {
+      'en': 'Please check your email to verify your account before sign in..',
+      'ar': '..يرجى التحقق من بريدك الإلكتروني قبل تسجيل الدخول',
+      'fr': 'Veuillez vérifier votre e-mail pour vous connecter ..',
+    },
   },
   // completeProfile
   {
@@ -864,7 +874,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': ' No tasks scheduled, need an task? Schedule one now.',
       'ar': 'لا توجد مهام مجدولة ، تحتاج إلى مهمة؟ حدد موعدًا واحدًا الآن.',
       'fr':
-          'Aucune tâche planifiée, besoin d&#39;une tâche ? Planifiez-en un maintenant.',
+          'Aucune tâche planifiée, besoin d\'une tâche ? Planifiez-en un maintenant.',
     },
     'xmsekc6r': {
       'en': 'Schedule',
@@ -951,7 +961,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'xi3b3m35': {
       'en': 'Device name',
       'ar': 'اسم الجهاز',
-      'fr': 'Nom de l&#39;appareil',
+      'fr': 'Nom de l\'appareil',
     },
     'bvoadnvg': {
       'en': 'Field is required',
@@ -979,12 +989,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '12d3i134': {
       'en': 'Name device',
       'ar': 'اسم الجهاز',
-      'fr': 'Nom de l&#39;appareil',
+      'fr': "Nom de l'appareil",
     },
     'b8e4pm8r': {
       'en': 'Enter serial number',
       'ar': 'اسم الجهاز',
-      'fr': 'Nom de l&#39;appareil',
+      'fr': "Nom de l'appareil",
     },
     'nln67zk6': {
       'en': 'Field is required',
@@ -1023,7 +1033,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': ' No Platform , need a Platform? Add one now.',
       'ar': 'لا يوجد منصة ، تحتاج إلى منصة؟ أضف واحدة الآن.',
       'fr':
-          'Pas de plateforme, besoin d&#39;une plateforme ? Ajoutez-en un maintenant.',
+          "Pas de plateforme, besoin d'une plateforme ? Ajoutez-en un maintenant.",
     },
     'n4p9ll3j': {
       'en': 'Add Platform',
@@ -1239,8 +1249,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '773155ra': {
       'en': 'Device Details',
-      'ar': 'أضف منصة',
-      'fr': 'Ajouter une plate-forme',
+      'ar': 'تفاصيل الجهاز',
+      'fr': 'Détails de l appareil',
     },
     'wj27swbb': {
       'en': 'device name',
@@ -1297,8 +1307,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'oyf8a277': {
       'en': 'Notification ',
-      'ar': 'اضف جهاز',
-      'fr': 'Ajouter un appareil',
+      'ar': 'إشعار',
+      'fr': 'Notification',
     },
   },
   // Miscellaneous
