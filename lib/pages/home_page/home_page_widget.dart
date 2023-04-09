@@ -498,9 +498,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                                 ) as List)
                                                                                     .map<String>((s) => s.toString())
                                                                                     .toList()
-                                                                                    ?.map((e) => e.toString())
+                                                                                    .map((e) => e.toString())
                                                                                     .toList()
-                                                                                    ?.toList())!
+                                                                                    .toList())!
                                                                             ? Color(0xFFCAEB67)
                                                                             : FlutterFlowTheme.of(context).grayDark,
                                                                         shape:
@@ -530,9 +530,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                                           ) as List)
                                                                                               .map<String>((s) => s.toString())
                                                                                               .toList()
-                                                                                              ?.map((e) => e.toString())
+                                                                                              .map((e) => e.toString())
                                                                                               .toList()
-                                                                                              ?.toList())!
+                                                                                              .toList())!
                                                                                       ? 'Online'
                                                                                       : 'Offline',
                                                                                   style: FlutterFlowTheme.of(context).bodyText1,
@@ -681,7 +681,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           (s) =>
                                                                               s.toString())
                                                                       .toList()
-                                                                      ?.toList(),
+                                                                      .toList(),
                                                                   0),
                                                         ),
                                                       ),
@@ -738,9 +738,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     ) as List)
                                                                         .map<String>((s) => s.toString())
                                                                         .toList()
-                                                                        ?.map((e) => e.toString())
+                                                                        .map((e) => e.toString())
                                                                         .toList()
-                                                                        ?.toList(),
+                                                                        .toList(),
                                                                     0),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -834,9 +834,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         ) as List)
                                                                             .map<String>((s) => s.toString())
                                                                             .toList()
-                                                                            ?.map((e) => e.toString())
+                                                                            .map((e) => e.toString())
                                                                             .toList()
-                                                                            ?.toList(),
+                                                                            .toList(),
                                                                         0),
                                                                     '0',
                                                                   ),
@@ -879,9 +879,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                       ) as List)
                                                                           .map<String>((s) => s.toString())
                                                                           .toList()
-                                                                          ?.map((e) => e.toString())
+                                                                          .map((e) => e.toString())
                                                                           .toList()
-                                                                          ?.toList(),
+                                                                          .toList(),
                                                                       0),
                                                                   '0',
                                                                 ),

@@ -388,7 +388,7 @@ class _DeviceDetailsWidgetState extends State<DeviceDetailsWidget> {
                                       child: Builder(
                                         builder: (context) {
                                           final power =
-                                              containerYdRecord!.powers;
+                                              containerYdRecord.powers;
 
                                           return Column(
                                             mainAxisSize: MainAxisSize.max,

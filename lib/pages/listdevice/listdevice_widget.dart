@@ -342,10 +342,10 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
                                                                         .map<String>((s) => s
                                                                             .toString())
                                                                         .toList()
-                                                                        ?.map((e) =>
+                                                                        .map((e) =>
                                                                             e.toString())
                                                                         .toList()
-                                                                        ?.toList())!) {
+                                                                        .toList())!) {
                                                               logFirebaseEvent(
                                                                   'Row_bottom_sheet');
                                                               await showModalBottomSheet(
@@ -409,9 +409,9 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
                                                                                 ) as List)
                                                                                     .map<String>((s) => s.toString())
                                                                                     .toList()
-                                                                                    ?.map((e) => e.toString())
+                                                                                    .map((e) => e.toString())
                                                                                     .toList()
-                                                                                    ?.toList())!
+                                                                                    .toList())!
                                                                             ? Color(0xFF8FB43A)
                                                                             : Color.fromARGB(157, 82, 83, 83),
                                                                         FlutterFlowTheme.of(context)
@@ -443,9 +443,9 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
                                                                                     ) as List)
                                                                                         .map<String>((s) => s.toString())
                                                                                         .toList()
-                                                                                        ?.map((e) => e.toString())
+                                                                                        .map((e) => e.toString())
                                                                                         .toList()
-                                                                                        ?.toList()) ??
+                                                                                        .toList()) ??
                                                                                 true)
                                                                               Image.asset(
                                                                                 'assets/images/smart-sensor.png',
@@ -460,9 +460,9 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
                                                                                 ) as List)
                                                                                     .map<String>((s) => s.toString())
                                                                                     .toList()
-                                                                                    ?.map((e) => e.toString())
+                                                                                    .map((e) => e.toString())
                                                                                     .toList()
-                                                                                    ?.toList())!)
+                                                                                    .toList())!)
                                                                               Image.asset(
                                                                                 'assets/images/agritech.png',
                                                                                 width: 30,
@@ -491,9 +491,9 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
                                                                                       ) as List)
                                                                                           .map<String>((s) => s.toString())
                                                                                           .toList()
-                                                                                          ?.map((e) => e.toString())
+                                                                                          .map((e) => e.toString())
                                                                                           .toList()
-                                                                                          ?.toList()) ==
+                                                                                          .toList()) ==
                                                                                   true
                                                                               ? FFLocalizations.of(context).getText(
                                                                                   'yna04pj6' /* Online */,
@@ -512,9 +512,9 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
                                                                                             ) as List)
                                                                                                 .map<String>((s) => s.toString())
                                                                                                 .toList()
-                                                                                                ?.map((e) => e.toString())
+                                                                                                .map((e) => e.toString())
                                                                                                 .toList()
-                                                                                                ?.toList()) ==
+                                                                                                .toList()) ==
                                                                                         true
                                                                                     ? Color.fromARGB(255, 100, 99, 99)
                                                                                     : Color(0xFFFF0000),
