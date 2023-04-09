@@ -240,9 +240,9 @@ class _WeatherPageWidgetState extends State<WeatherPageWidget> {
                                                                       ) as List)
                                                                           .map<String>((s) => s.toString())
                                                                           .toList()
-                                                                          ?.map((e) => e.toString())
+                                                                          .map((e) => e.toString())
                                                                           .toList()
-                                                                          ?.toList(),
+                                                                          .toList(),
                                                                       0),
                                                                   textAlign:
                                                                       TextAlign
@@ -374,7 +374,7 @@ class _WeatherPageWidgetState extends State<WeatherPageWidget> {
                                                             .map<String>((s) =>
                                                                 s.toString())
                                                             .toList()
-                                                            ?.toList(),
+                                                            .toList(),
                                                         0),
                                                   ),
                                                 ),
@@ -506,9 +506,9 @@ class _WeatherPageWidgetState extends State<WeatherPageWidget> {
                                                                                   ) as List)
                                                                                       .map<String>((s) => s.toString())
                                                                                       .toList()
-                                                                                      ?.map((e) => e.toString())
+                                                                                      .map((e) => e.toString())
                                                                                       .toList()
-                                                                                      ?.toList(),
+                                                                                      .toList(),
                                                                                   0),
                                                                               textAlign: TextAlign.center,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
@@ -547,7 +547,7 @@ class _WeatherPageWidgetState extends State<WeatherPageWidget> {
                                                                                 ) as List)
                                                                                     .map<String>((s) => s.toString())
                                                                                     .toList()
-                                                                                    ?.toList(),
+                                                                                    .toList(),
                                                                                 0),
                                                                           ),
                                                                         ),
@@ -558,7 +558,7 @@ class _WeatherPageWidgetState extends State<WeatherPageWidget> {
                                                                               ) as List)
                                                                                   .map<String>((s) => s.toString())
                                                                                   .toList()
-                                                                                  ?.toList(),
+                                                                                  .toList(),
                                                                               0),
                                                                           textAlign:
                                                                               TextAlign.center,
@@ -626,9 +626,9 @@ class _WeatherPageWidgetState extends State<WeatherPageWidget> {
                                                                                   ) as List)
                                                                                       .map<String>((s) => s.toString())
                                                                                       .toList()
-                                                                                      ?.map((e) => e.toString())
+                                                                                      .map((e) => e.toString())
                                                                                       .toList()
-                                                                                      ?.toList(),
+                                                                                      .toList(),
                                                                                   1),
                                                                               textAlign: TextAlign.center,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
@@ -667,7 +667,7 @@ class _WeatherPageWidgetState extends State<WeatherPageWidget> {
                                                                                 ) as List)
                                                                                     .map<String>((s) => s.toString())
                                                                                     .toList()
-                                                                                    ?.toList(),
+                                                                                    .toList(),
                                                                                 1),
                                                                           ),
                                                                         ),
@@ -678,7 +678,7 @@ class _WeatherPageWidgetState extends State<WeatherPageWidget> {
                                                                               ) as List)
                                                                                   .map<String>((s) => s.toString())
                                                                                   .toList()
-                                                                                  ?.toList(),
+                                                                                  .toList(),
                                                                               1),
                                                                           textAlign:
                                                                               TextAlign.center,
@@ -746,9 +746,9 @@ class _WeatherPageWidgetState extends State<WeatherPageWidget> {
                                                                                   ) as List)
                                                                                       .map<String>((s) => s.toString())
                                                                                       .toList()
-                                                                                      ?.map((e) => e.toString())
+                                                                                      .map((e) => e.toString())
                                                                                       .toList()
-                                                                                      ?.toList(),
+                                                                                      .toList(),
                                                                                   2),
                                                                               textAlign: TextAlign.center,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
@@ -787,7 +787,7 @@ class _WeatherPageWidgetState extends State<WeatherPageWidget> {
                                                                                 ) as List)
                                                                                     .map<String>((s) => s.toString())
                                                                                     .toList()
-                                                                                    ?.toList(),
+                                                                                    .toList(),
                                                                                 2),
                                                                           ),
                                                                         ),
@@ -798,7 +798,7 @@ class _WeatherPageWidgetState extends State<WeatherPageWidget> {
                                                                               ) as List)
                                                                                   .map<String>((s) => s.toString())
                                                                                   .toList()
-                                                                                  ?.toList(),
+                                                                                  .toList(),
                                                                               2),
                                                                           textAlign:
                                                                               TextAlign.center,
@@ -866,9 +866,9 @@ class _WeatherPageWidgetState extends State<WeatherPageWidget> {
                                                                                   ) as List)
                                                                                       .map<String>((s) => s.toString())
                                                                                       .toList()
-                                                                                      ?.map((e) => e.toString())
+                                                                                      .map((e) => e.toString())
                                                                                       .toList()
-                                                                                      ?.toList(),
+                                                                                      .toList(),
                                                                                   3),
                                                                               textAlign: TextAlign.center,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
@@ -907,7 +907,7 @@ class _WeatherPageWidgetState extends State<WeatherPageWidget> {
                                                                                 ) as List)
                                                                                     .map<String>((s) => s.toString())
                                                                                     .toList()
-                                                                                    ?.toList(),
+                                                                                    .toList(),
                                                                                 3),
                                                                           ),
                                                                         ),
@@ -918,7 +918,7 @@ class _WeatherPageWidgetState extends State<WeatherPageWidget> {
                                                                               ) as List)
                                                                                   .map<String>((s) => s.toString())
                                                                                   .toList()
-                                                                                  ?.toList(),
+                                                                                  .toList(),
                                                                               3),
                                                                           textAlign:
                                                                               TextAlign.center,
@@ -1020,9 +1020,9 @@ class _WeatherPageWidgetState extends State<WeatherPageWidget> {
                                                                           ) as List)
                                                                               .map<String>((s) => s.toString())
                                                                               .toList()
-                                                                              ?.map((e) => e.toString())
+                                                                              .map((e) => e.toString())
                                                                               .toList()
-                                                                              ?.toList(),
+                                                                              .toList(),
                                                                           0),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
@@ -1122,9 +1122,9 @@ class _WeatherPageWidgetState extends State<WeatherPageWidget> {
                                                                           ) as List)
                                                                               .map<String>((s) => s.toString())
                                                                               .toList()
-                                                                              ?.map((e) => e.toString())
+                                                                              .map((e) => e.toString())
                                                                               .toList()
-                                                                              ?.toList(),
+                                                                              .toList(),
                                                                           0),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
