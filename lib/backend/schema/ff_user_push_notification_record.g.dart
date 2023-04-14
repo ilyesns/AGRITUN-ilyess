@@ -40,6 +40,20 @@ class _$FfUserPushNotificationRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.devname;
+    if (value != null) {
+      result
+        ..add('devName')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.platname;
+    if (value != null) {
+      result
+        ..add('platName')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.sender;
     if (value != null) {
       result
@@ -93,6 +107,14 @@ class _$FfUserPushNotificationRecordSerializer
           result.notificationTitle = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'devName':
+          result.devname = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'platName':
+          result.platname = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'sender':
           result.sender = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -130,6 +152,10 @@ class _$FfUserPushNotificationRecord extends FfUserPushNotificationRecord {
   @override
   final DateTime? timestamp;
   @override
+  final String? devname;
+  @override
+  final String? platname;
+  @override
   final bool? marked;
   @override
   final DocumentReference<Object?>? ffRef;
@@ -143,7 +169,9 @@ class _$FfUserPushNotificationRecord extends FfUserPushNotificationRecord {
       this.notificationTitle,
       this.sender,
       this.timestamp,
+      this.platname,
       this.marked,
+      this.devname,
       this.ffRef})
       : super._();
 
@@ -164,6 +192,8 @@ class _$FfUserPushNotificationRecord extends FfUserPushNotificationRecord {
         notificationTitle == other.notificationTitle &&
         sender == other.sender &&
         marked == other.marked &&
+        devname == other.devname &&
+        platname == other.platname &&
         timestamp == other.timestamp &&
         ffRef == other.ffRef;
   }
@@ -174,8 +204,10 @@ class _$FfUserPushNotificationRecord extends FfUserPushNotificationRecord {
     _$hash = $jc(_$hash, notificationText.hashCode);
     _$hash = $jc(_$hash, notificationTitle.hashCode);
     _$hash = $jc(_$hash, sender.hashCode);
+    _$hash = $jc(_$hash, platname.hashCode);
     _$hash = $jc(_$hash, timestamp.hashCode);
     _$hash = $jc(_$hash, marked.hashCode);
+    _$hash = $jc(_$hash, devname.hashCode);
     _$hash = $jc(_$hash, ffRef.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -186,9 +218,11 @@ class _$FfUserPushNotificationRecord extends FfUserPushNotificationRecord {
     return (newBuiltValueToStringHelper(r'FfUserPushNotificationRecord')
           ..add('notificationText', notificationText)
           ..add('notificationTitle', notificationTitle)
+          ..add('platname', platname)
           ..add('sender', sender)
           ..add('timestamp', timestamp)
           ..add('marked', marked)
+          ..add('devname', devname)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -204,6 +238,14 @@ class FfUserPushNotificationRecordBuilder
   String? get notificationText => _$this._notificationText;
   set notificationText(String? notificationText) =>
       _$this._notificationText = notificationText;
+
+  String? _devname;
+  String? get devname => _$this._devname;
+  set devname(String? devname) => _$this._devname = devname;
+
+  String? _platname;
+  String? get platname => _$this._platname;
+  set platname(String? platname) => _$this._platname = platname;
 
   String? _notificationTitle;
   String? get notificationTitle => _$this._notificationTitle;
@@ -237,6 +279,8 @@ class FfUserPushNotificationRecordBuilder
       _notificationTitle = $v.notificationTitle;
       _sender = $v.sender;
       _marked = $v.marked;
+      _devname = $v.devname;
+      _platname = $v.platname;
       _timestamp = $v.timestamp;
       _ffRef = $v.ffRef;
       _$v = null;
@@ -263,6 +307,8 @@ class FfUserPushNotificationRecordBuilder
         new _$FfUserPushNotificationRecord._(
             notificationText: notificationText,
             notificationTitle: notificationTitle,
+            devname: devname,
+            platname: platname,
             sender: sender,
             timestamp: timestamp,
             marked: marked,

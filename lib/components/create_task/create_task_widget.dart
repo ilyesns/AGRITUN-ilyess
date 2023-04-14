@@ -1,3 +1,5 @@
+import '../../flutter_flow/flutter_flow_drop_down.dart';
+import '../../flutter_flow/form_field_controller.dart';
 import '/auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -294,6 +296,7 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget>
                           key: _model.formKey,
                           autovalidateMode: AutovalidateMode.disabled,
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
@@ -346,12 +349,10 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget>
                                             20.0, 24.0, 0.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
-                                      .subtitle2
+                                      .bodyText1
                                       .override(
                                         fontFamily: 'Outfit',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        fontWeight: FontWeight.bold,
+                                        fontSize: 17.0,
                                       ),
                                   validator: _model.tasknameControllerValidator
                                       .asValidator(context),
@@ -408,18 +409,27 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget>
                                             20.0, 24.0, 0.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
-                                      .subtitle2
+                                      .bodyText1
                                       .override(
                                         fontFamily: 'Outfit',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        fontWeight: FontWeight.bold,
+                                        fontSize: 17.0,
                                       ),
                                   validator: _model
                                       .taskdescriptionControllerValidator
                                       .asValidator(context),
                                 ).animateOnPageLoad(animationsMap[
                                     'textFieldOnPageLoadAnimation2']!),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10, 10, 0, 0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'hr53j78p' /* Time to start action */,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context).bodyText2,
+                                ),
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
@@ -450,12 +460,7 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget>
                                                 .languageCode,
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                fontSize: 17.0,
-                                                fontWeight: FontWeight.w600,
-                                              ),
+                                              .bodyText1,
                                         ),
                                         InkWell(
                                           onTap: () async {
@@ -508,93 +513,245 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget>
                                 ).animateOnPageLoad(animationsMap[
                                     'containerOnPageLoadAnimation1']!),
                               ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 10.0, 0.0, 0.0),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 60.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                    borderRadius: BorderRadius.circular(8.0),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 20),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 340,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'lcmehjd3' /* To apply an sync action to you... */,
                                   ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 10.0, 10.0, 10.0),
-                                    child: Row(
+                                  style: FlutterFlowTheme.of(context).bodyText2,
+                                ),
+                              ),
+                              Theme(
+                                data: ThemeData(
+                                  checkboxTheme: CheckboxThemeData(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(0),
+                                    ),
+                                  ),
+                                  unselectedWidgetColor:
+                                      FlutterFlowTheme.of(context).grayDark,
+                                ),
+                                child: Checkbox(
+                                  value: _model.checkboxValue ??= false,
+                                  onChanged: (newValue) async {
+                                    setState(
+                                        () => _model.checkboxValue = newValue!);
+                                  },
+                                  activeColor:
+                                      FlutterFlowTheme.of(context).primaryColor,
+                                ),
+                              ),
+                              if (_model.checkboxValue == true)
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 20, 0, 0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    child: Column(
                                       mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          dateTimeFormat(
-                                            'd/M H:mm',
-                                            _model.datePicked2,
-                                            locale: FFLocalizations.of(context)
-                                                .languageCode,
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 0, 0, 10),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              'qx5zasig' /* Select the device */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText2,
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                fontSize: 17.0,
-                                                fontWeight: FontWeight.w600,
-                                              ),
                                         ),
-                                        InkWell(
-                                          onTap: () async {
-                                            logFirebaseEvent(
-                                                'CREATE_TASK_COMP_Icon_taqnod5y_ON_TAP');
-                                            logFirebaseEvent(
-                                                'Icon_date_time_picker');
-                                            final _datePicked2Date =
-                                                await showDatePicker(
-                                              context: context,
-                                              initialDate: getCurrentTimestamp,
-                                              firstDate: getCurrentTimestamp,
-                                              lastDate: DateTime(2050),
-                                            );
-
-                                            TimeOfDay? _datePicked2Time;
-                                            if (_datePicked2Date != null) {
-                                              _datePicked2Time =
-                                                  await showTimePicker(
-                                                context: context,
-                                                initialTime:
-                                                    TimeOfDay.fromDateTime(
-                                                        getCurrentTimestamp),
-                                              );
-                                            }
-
-                                            if (_datePicked2Date != null &&
-                                                _datePicked2Time != null) {
-                                              setState(() {
-                                                _model.datePicked2 = DateTime(
-                                                  _datePicked2Date.year,
-                                                  _datePicked2Date.month,
-                                                  _datePicked2Date.day,
-                                                  _datePicked2Time!.hour,
-                                                  _datePicked2Time.minute,
-                                                );
-                                              });
-                                            }
-                                          },
-                                          child: Icon(
-                                            Icons.date_range_rounded,
+                                        Container(
+                                          width: double.infinity,
+                                          decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
-                                            size: 35.0,
+                                                .secondaryBackground,
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 0, 0, 10),
+                                            child: StreamBuilder<
+                                                List<DevicesRecord>>(
+                                              stream: queryDevicesRecord(
+                                                queryBuilder: (devicesRecord) =>
+                                                    devicesRecord.where(
+                                                        'idUser',
+                                                        isEqualTo:
+                                                            currentUserReference),
+                                              ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 40,
+                                                      height: 40,
+                                                      child: SpinKitFoldingCube(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryColor,
+                                                        size: 40,
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                List<DevicesRecord>
+                                                    dropDownDevicesRecordList =
+                                                    snapshot.data!;
+                                                return FlutterFlowDropDown<
+                                                    String>(
+                                                  controller: _model
+                                                          .dropDownValueController1 ??=
+                                                      FormFieldController<
+                                                          String>(null),
+                                                  options:
+                                                      dropDownDevicesRecordList
+                                                          .map((e) => e.devName)
+                                                          .withoutNulls
+                                                          .toList()
+                                                          .toList(),
+                                                  onChanged: (val) => setState(
+                                                      () => _model
+                                                              .dropDownValue1 =
+                                                          val),
+                                                  width: 180,
+                                                  height: 50,
+                                                  searchHintTextStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyText2,
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyText2,
+                                                  hintText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    '887c4cit' /* Please select... */,
+                                                  ),
+                                                  searchHintText:
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                    '458no0ar' /* Search for an item... */,
+                                                  ),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryBackground,
+                                                  elevation: 2,
+                                                  borderColor:
+                                                      Colors.transparent,
+                                                  borderWidth: 0,
+                                                  borderRadius: 0,
+                                                  margin: EdgeInsetsDirectional
+                                                      .fromSTEB(12, 4, 12, 4),
+                                                  hidesUnderline: true,
+                                                  isSearchable: false,
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 0, 0, 10),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              '56cnppy6' /* Select the action */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText2,
+                                          ),
+                                        ),
+                                        Container(
+                                          width: double.infinity,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          child: FlutterFlowDropDown<String>(
+                                            controller: _model
+                                                    .dropDownValueController2 ??=
+                                                FormFieldController<String>(
+                                                    null),
+                                            options: [
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'ec92w0qr' /* On */,
+                                              ),
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '6nguq8no' /* Off */,
+                                              ),
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'tuiyvs4l' /* Reverse */,
+                                              )
+                                            ],
+                                            onChanged: (val) => setState(() =>
+                                                _model.dropDownValue2 = val),
+                                            width: 180,
+                                            height: 50,
+                                            searchHintTextStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText2,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText2,
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              '887c4cit' /* Please select... */,
+                                            ),
+                                            searchHintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              '458no0ar' /* Search for an item... */,
+                                            ),
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryBackground,
+                                            elevation: 2,
+                                            borderColor: Colors.transparent,
+                                            borderWidth: 0,
+                                            borderRadius: 0,
+                                            margin:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    12, 4, 12, 4),
+                                            hidesUnderline: true,
+                                            isSearchable: false,
                                           ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                ).animateOnPageLoad(animationsMap[
-                                    'containerOnPageLoadAnimation2']!),
-                              ),
+                                ),
                             ],
                           ),
                         ),
@@ -611,7 +768,7 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget>
                                   logFirebaseEvent(
                                       'CREATE_TASK_COMP_CANCEL_BTN_ON_TAP');
                                   logFirebaseEvent('Button_navigate_back');
-                                  context.pop();
+                                  Navigator.pop(context);
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   'hq50pkh6' /* Cancel */,
@@ -626,12 +783,10 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget>
                                   color: FlutterFlowTheme.of(context)
                                       .primaryBackground,
                                   textStyle: FlutterFlowTheme.of(context)
-                                      .subtitle2
+                                      .bodyText1
                                       .override(
                                         fontFamily: 'Outfit',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        fontWeight: FontWeight.w500,
+                                        fontSize: 17.0,
                                       ),
                                   elevation: 0.0,
                                   borderSide: BorderSide(
@@ -659,8 +814,8 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget>
 
                                   final tasksCreateData = createTasksRecordData(
                                     taskName: _model.tasknameController.text,
-                                    tsCreateTime: _model.datePicked1,
-                                    tsStartTime: _model.datePicked2,
+                                    tsCreateTime: getCurrentTimestamp,
+                                    tsStartTime: _model.datePicked1,
                                     description:
                                         _model.taskdescriptionController.text,
                                   );
@@ -668,7 +823,7 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget>
                                           currentUserReference!)
                                       .set(tasksCreateData);
                                   logFirebaseEvent('Button_navigate_back');
-                                  context.pop();
+                                  Navigator.pop(context);
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   'fay80n6l' /* Add task */,
@@ -682,13 +837,8 @@ class _CreateTaskWidgetState extends State<CreateTaskWidget>
                                       0.0, 0.0, 0.0, 0.0),
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .subtitle2
-                                      .override(
-                                        fontFamily: 'Outfit',
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w500,
-                                      ),
+                                  textStyle:
+                                      FlutterFlowTheme.of(context).subtitle2,
                                   elevation: 3.0,
                                   borderSide: BorderSide(
                                     color: Colors.transparent,

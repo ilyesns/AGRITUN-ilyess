@@ -32,6 +32,9 @@ abstract class YdRecord implements Built<YdRecord, YdRecordBuilder> {
   @BuiltValueField(wireName: 'ENERGY')
   Map<String, dynamic>? get energy;
 
+  @BuiltValueField(wireName: 'Uptime')
+  String? get uptime;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -43,6 +46,7 @@ abstract class YdRecord implements Built<YdRecord, YdRecordBuilder> {
     ..idf = ''
     ..powers = {}
     ..wifi = {}
+    ..uptime = ''
     ..energy = {};
 
   static CollectionReference get collection =>

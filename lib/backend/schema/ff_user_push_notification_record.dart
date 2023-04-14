@@ -19,6 +19,10 @@ abstract class FfUserPushNotificationRecord
   @BuiltValueField(wireName: 'notification_title')
   String? get notificationTitle;
 
+  String? get devname;
+
+  String? get platname;
+
   DocumentReference? get sender;
 
   DateTime? get timestamp;

@@ -322,7 +322,7 @@ class _EditDeviceWidgetState extends State<EditDeviceWidget>
                                   logFirebaseEvent(
                                       'EDIT_DEVICE_COMP_CANCEL_BTN_ON_TAP');
                                   logFirebaseEvent('Button_navigate_back');
-                                  context.pop();
+                                  Navigator.pop(context);
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   'w3x4c5tf' /* Cancel */,

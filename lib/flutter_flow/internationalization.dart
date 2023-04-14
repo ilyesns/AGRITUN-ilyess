@@ -889,6 +889,54 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'إضافة مهمة',
       'fr': 'Ajouter une tâche',
     },
+    'qx5zasig': {
+      'en': 'To select a device, please choose from the drop-down menu.',
+      'ar': 'لتحديد جهاز، يرجى اختياره من القائمة المنسدلة.',
+      'fr':
+          'Pour sélectionner un appareil, veuillez choisir dans le menu déroulant.',
+    },
+    '887c4cit': {
+      'en': 'Please select...',
+      'ar': 'يرجى الاختيار',
+      'fr': 'Veuillez sélectionner...',
+    },
+    '458no0ar': {
+      'en': 'Search for an item...',
+      'ar': 'البحث عن عنصر',
+      'fr': 'Rechercher un élément...',
+    },
+    '56cnppy6': {
+      'en': 'To choose an action, please select from the drop-down menu.',
+      'ar': 'للاختيار من بين الإجراءات، يرجى اختيارها من القائمة المنسدلة',
+      'fr':
+          'Pour choisir une action, veuillez sélectionner dans le menu déroulant.',
+    },
+    'ec92w0qr': {
+      'en': 'On ',
+      'ar': 'تشغيل',
+      'fr': 'Allumé',
+    },
+    '6nguq8no': {
+      'en': 'Off ',
+      'ar': 'إيقاف',
+      'fr': 'Éteint',
+    },
+    'tuiyvs4l': {
+      'en': 'Reverse ',
+      'ar': 'عكس',
+      'fr': 'Inverser',
+    },
+    'lcmehjd3': {
+      'en': 'To apply an sync action to your device, please check the box. ',
+      'ar': 'لتطبيق إجراء المزامنة على جهازك، يرجى تحديد الخانة',
+      'fr':
+          'Pour appliquer une action de synchronisation à votre appareil, veuillez cocher la case.',
+    },
+    'hr53j78p': {
+      'en': 'Time to start action ',
+      'ar': 'وقت بدء الإجراء',
+      'fr': 'Temps de début de l\'action',
+    },
     '0hj3m03m': {
       'en': 'Fill out the information below in order to task',
       'ar': 'املأ المعلومات أدناه لمهمة جديدة.',

@@ -29,14 +29,26 @@ class NotificationManager extends ChangeNotifier {
     );
   }
 
+  void handleNotificationTap(RemoteMessage message) {
+    // Here, you can add your logic to navigate the user to the desired page.
+    // For example, you can use the Flutter Navigator class to push a new route.
+    // You can also pass data from the notification payload to the new route.
+    print(message.data);
+  }
+
   void registerNotification() {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       if (message.notification != null) {
-        print('onMessage if : ${message.notification!.title}');
+        print('onMessage  : ${message.notification!.title}');
+        print(" message data : ${message.data}");
       }
 
       localNotification.setupFlutterNotifications();
       localNotification.showFlutterNotification(message);
+    });
+
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      handleNotificationTap(message);
     });
 
     messaging.getToken().then((token) {

@@ -301,6 +301,8 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
                                                             .call(),
                                                     builder:
                                                         (context, snapshot) {
+                                                      // ignore: unnecessary_null_comparison
+
                                                       // Customize what your widget looks like when it's loading.
                                                       if (!snapshot.hasData) {
                                                         return Center(
@@ -315,6 +317,19 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
                                                           ),
                                                         );
                                                       }
+
+                                                      if (snapshot.data ==
+                                                          null) {
+                                                        return Center(
+                                                          child: SizedBox(
+                                                            width: 150,
+                                                            height: 70,
+                                                            child: Text(
+                                                                "Something went wrong , try again"),
+                                                          ),
+                                                        );
+                                                      }
+
                                                       final deviceCardMqttApiListClientResponse =
                                                           snapshot.data!;
                                                       return Container(

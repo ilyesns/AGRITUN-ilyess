@@ -151,7 +151,6 @@ class _FfNotificationWidgetState extends State<FfNotificationWidget> {
                                     logFirebaseEvent('Button_backend_call');
                                     // ignore: non_constant_identifier_names
 
-                                    print("true");
                                     if (columnFfUserPushNotificationRecord
                                             .marked ==
                                         true) {
@@ -171,91 +170,120 @@ class _FfNotificationWidgetState extends State<FfNotificationWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                     ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Row(
-                                          mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Icon(
                                               Icons.toggle_on_sharp,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
-                                              size: 45,
-                                            ),
-                                            Text(
-                                              columnFfUserPushNotificationRecord
-                                                  .notificationTitle!,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        fontSize: 20,
-                                                      ),
+                                              size: 35,
                                             ),
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(20, 0, 0, 0),
                                               child: Text(
                                                 columnFfUserPushNotificationRecord
-                                                    .notificationText!,
+                                                    .platname!,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText1
                                                         .override(
                                                           fontFamily: 'Outfit',
-                                                          fontSize: 16,
+                                                          fontSize: 17,
                                                         ),
                                               ),
                                             ),
                                           ],
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 40, 0),
-                                          child: Text(
-                                            dateTimeFormat(
-                                              'd/M h:mm a',
-                                              columnFfUserPushNotificationRecord
-                                                  .timestamp!,
-                                              locale:
-                                                  FFLocalizations.of(context)
-                                                      .languageCode,
-                                            ),
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Outfit',
-                                                  fontSize: 15,
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Text(
+                                                  columnFfUserPushNotificationRecord
+                                                      .notificationTitle!,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        fontSize: 15,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
                                                 ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.only(
-                                                  start: 0.0, end: 8.0),
-                                          child: Container(
-                                            width: 12.0,
-                                            height: 12.0,
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: columnFfUserPushNotificationRecord
-                                                              .marked !=
-                                                          null &&
-                                                      columnFfUserPushNotificationRecord
-                                                              .marked ==
-                                                          true
-                                                  ? FlutterFlowTheme.of(context)
-                                                      .primaryColor
-                                                  : Colors.transparent,
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(20, 0, 0, 0),
+                                                  child: Text(
+                                                    columnFfUserPushNotificationRecord
+                                                        .notificationText!,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          fontSize: 13,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                          ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 0, 40, 0),
+                                              child: Text(
+                                                dateTimeFormat(
+                                                  'd/M h:mm a',
+                                                  columnFfUserPushNotificationRecord
+                                                      .timestamp!,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ),
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          fontSize: 13,
+                                                        ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                          .only(
+                                                      start: 0.0, end: 8.0),
+                                              child: Container(
+                                                width: 12.0,
+                                                height: 12.0,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: columnFfUserPushNotificationRecord
+                                                                  .marked !=
+                                                              null &&
+                                                          columnFfUserPushNotificationRecord
+                                                                  .marked ==
+                                                              true
+                                                      ? FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryColor
+                                                      : Colors.transparent,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),

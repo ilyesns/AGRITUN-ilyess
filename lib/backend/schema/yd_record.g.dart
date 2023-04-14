@@ -47,6 +47,13 @@ class _$YdRecordSerializer implements StructuredSerializer<YdRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.uptime;
+    if (value != null) {
+      result
+        ..add('Uptime')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.powers;
     if (value != null) {
       result
@@ -108,6 +115,10 @@ class _$YdRecordSerializer implements StructuredSerializer<YdRecord> {
           break;
         case 'IDF':
           result.idf = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'Uptime':
+          result.uptime = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
         case 'POWERS':
@@ -172,6 +183,8 @@ class _$YdRecord extends YdRecord {
   @override
   final String? idf;
   @override
+  final String? uptime;
+  @override
   final Map<String, String>? powers;
   @override
   final Map<String, dynamic>? wifi;
@@ -190,6 +203,7 @@ class _$YdRecord extends YdRecord {
     this.idf,
     this.powers,
     this.wifi,
+    this.uptime,
     this.energy,
     this.ffRef,
   }) : super._();
@@ -212,6 +226,7 @@ class _$YdRecord extends YdRecord {
         powers == other.powers &&
         wifi == other.wifi &&
         energy == other.energy &&
+        uptime == other.uptime &&
         ffRef == other.ffRef;
   }
 
@@ -235,6 +250,7 @@ class _$YdRecord extends YdRecord {
           ..add('yfp', yfp)
           ..add('idf', idf)
           ..add('powers', powers)
+          ..add('uptime', uptime)
           ..add('wifi', wifi)
           ..add('energy', energy)
           ..add('ffRef', ffRef))
@@ -260,6 +276,10 @@ class YdRecordBuilder implements Builder<YdRecord, YdRecordBuilder> {
   String? _idf;
   String? get idf => _$this._idf;
   set idf(String? idf) => _$this._idf = idf;
+
+  String? _uptime;
+  String? get uptime => _$this._uptime;
+  set uptime(String? uptime) => _$this._uptime = uptime;
 
   Map<String, String>? _powers;
   Map<String, String>? get powers =>
@@ -322,6 +342,7 @@ class YdRecordBuilder implements Builder<YdRecord, YdRecordBuilder> {
               topic: topic,
               yfp: yfp,
               idf: idf,
+              uptime: uptime,
               powers: _powers,
               wifi: _wifi,
               energy: _energy,

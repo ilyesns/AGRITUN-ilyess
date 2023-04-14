@@ -82,8 +82,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, _) {
             if (appStateNotifier.loggedIn &&
                 appStateNotifier.currrentUserEmailVerif &&
-                (currentUserDisplayName == null ||
-                    currentUserDisplayName == '')) {
+                currentUserDisplayName == null) {
               return CompleteProfileWidget();
             } else if (appStateNotifier.loggedIn &&
                 appStateNotifier.currrentUserEmailVerif) {
