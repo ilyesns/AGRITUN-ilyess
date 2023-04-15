@@ -27,7 +27,9 @@ void main() async {
   await initFirebase();
 
   await FlutterFlowTheme.initialize();
+  // commit
 
+  print("");
   final appState = FFAppState(); // Initialize FFAppState
   final registerNotifcation = NotificationManager();
 
