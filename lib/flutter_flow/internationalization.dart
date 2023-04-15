@@ -416,8 +416,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'b30pg99t': {
       'en': 'Privacy Policy',
-      'ar': '',
-      'fr': '',
+      'ar': 'سياسة الخصوصية',
+      'fr': 'Politique de confidentialité',
     },
     '15dt70dz': {
       'en': '•',
@@ -464,8 +464,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'c4m2go26': {
       'en': 'm/s',
-      'ar': 'تصلب متعدد',
-      'fr': 'Mme',
+      'ar': 'م/ث',
+      'fr': 'm/s',
     },
     'n8wqv7v0': {
       'en': 'Current tasks',
@@ -529,14 +529,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Editer le profil',
     },
     'vqcq3xwb': {
-      'en': 'Change Photo',
-      'ar': 'غير الصوره',
-      'fr': 'Changer la photo',
+      'en': 'Change profile photo',
+      'ar': 'تغيير صورة الملف الشخصي',
+      'fr': 'Changer la photo de profil',
     },
     'ijtkloca': {
       'en': 'Your Name',
       'ar': 'اسمك',
       'fr': 'votre nom',
+    },
+    'ijtklocb': {
+      'en': 'Your role',
+      'ar': 'دورك',
+      'fr': 'Ton rôle',
     },
     'ome10sju': {
       'en': 'Please enter a valid number...',
@@ -604,14 +609,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Modifier votre emplacement',
     },
     '5suxyb8o': {
-      'en': 'Set location',
-      'ar': 'تحديد المكان',
-      'fr': 'Définir l\'emplacement',
+      'en': 'Set your location',
+      'ar': 'حدد موقعك',
+      'fr': 'Définir votre position',
     },
     's1o4xpp5': {
       'en': 'Save Changes',
-      'ar': 'حفظ التغييرات',
-      'fr': 'Sauvegarder les modifications',
+      'ar': 'حفظ',
+      'fr': 'Sauvegarder',
     },
     'a594l13m': {
       'en': 'Home',
@@ -1041,8 +1046,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'b8e4pm8r': {
       'en': 'Enter serial number',
-      'ar': 'اسم الجهاز',
-      'fr': "Nom de l'appareil",
+      'ar': 'أدخل الرقم التسلسلي',
+      'fr': "Entrer le numéro de série",
     },
     'nln67zk6': {
       'en': 'Field is required',
@@ -1205,12 +1210,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'vez18y65': {
       'en': 'You didn\'t set location yet!',
       'ar': 'لم تحدد الموقع بعد!',
-      'fr': 'Vous n&#39;avez pas encore défini de lieu !',
+      'fr': 'Vous n\'avez pas encore défini de lieu  !',
     },
     'w9fqg1rn': {
-      'en': 'Set location',
-      'ar': 'تحديد المكان',
-      'fr': 'Définir l&#39;emplacement',
+      'en': 'Set your location',
+      'ar': 'حدد موقعك',
+      'fr': 'Définir votre position',
     },
   },
   // popupwarning
@@ -1357,6 +1362,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Notification ',
       'ar': 'إشعار',
       'fr': 'Notification',
+    },
+    'oyf8a278': {
+      'en': 'You have no new notifications.',
+      'ar': 'ليس لديك أي إشعارات جديدة.',
+      'fr': 'Vous n\'avez pas de nouvelles notifications.',
     },
   },
   // Miscellaneous

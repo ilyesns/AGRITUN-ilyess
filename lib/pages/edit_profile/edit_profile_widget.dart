@@ -232,7 +232,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           'vqcq3xwb' /* Change Photo */,
                         ),
                         options: FFButtonOptions(
-                          width: 140.0,
+                          width: 160.0,
                           height: 40.0,
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
@@ -418,6 +418,21 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         validator: _model.yourAgeControllerValidator
                             .asValidator(context),
                       ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(30.0, 0, 20.0, 0),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              'ijtklocb' /* Your Name */,
+                            ),
+                            style: FlutterFlowTheme.of(context).bodyText2,
+                          ),
+                        ),
+                      ],
                     ),
                     Padding(
                       padding:

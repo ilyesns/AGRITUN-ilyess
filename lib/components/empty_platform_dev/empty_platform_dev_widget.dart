@@ -110,7 +110,7 @@ class _EmptyPlatformDevWidgetState extends State<EmptyPlatformDevWidget> {
                             fontFamily: 'Outfit',
                             color:
                                 FlutterFlowTheme.of(context).primaryBackground,
-                            fontSize: 18.0,
+                            fontSize: 16.0,
                             fontWeight: FontWeight.w600,
                           ),
                     ),
