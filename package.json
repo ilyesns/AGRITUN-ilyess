@@ -9,11 +9,11 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": ""
   },
   "repository": {
     "type": "git",
-    "url": "AGRITUN"
+    "url": "https://github.com/steyagri/AGRITUN"
   },
   "author": "YAGRITECH",
   "license": "ISC"
