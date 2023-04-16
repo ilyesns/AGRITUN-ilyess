@@ -770,6 +770,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'كل الدردشات',
       'fr': 'Tous les chats',
     },
+    'vsmgpojy': {
+      'en': 'Delete message!',
+      'ar': 'حذف رسالة!',
+      'fr': 'Supprimer le message !',
+    },
+    'vsmgpojx': {
+      'en': 'You want to remove this message?',
+      'ar': 'تريد إزالة هذه الرسالة؟',
+      'fr': 'Vous voulez supprimer ce message ?',
+    },
   },
   // InviteUser
   {

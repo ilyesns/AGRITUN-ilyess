@@ -1,3 +1,5 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
+
 import 'index.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -216,6 +218,46 @@ class _FFChatMessageState extends State<FFChatMessage> {
           children: [
             const SizedBox(height: 6.0),
             InkWell(
+              onLongPress: widget.chatMessage.text == "You unsent a message"
+                  ? null
+                  : () {
+                      AwesomeDialog(
+                        context: context,
+                        dialogType: DialogType.warning,
+                        headerAnimationLoop: false,
+                        animType: AnimType.bottomSlide,
+                        title: FFLocalizations.of(context).getText('vsmgpojy'),
+                        desc: FFLocalizations.of(context).getText('vsmgpojx'),
+                        buttonsTextStyle: const TextStyle(color: Colors.black),
+                        showCloseIcon: true,
+                        btnCancelOnPress: () {},
+                        btnOkOnPress: () {
+                          final text = widget.chatMessage.text;
+                          final updateMessage = createChatMessagesRecordData(
+                              text: "You unsent a message");
+
+                          final updateChatMessage = createChatsRecordData(
+                              lastMessage: "You unsent a message");
+                          FirebaseFirestore.instance
+                              .collection('chat_messages')
+                              .doc(widget.chatMessage.id)
+                              .get()
+                              .then((value) {
+                            DocumentReference<Map<String, dynamic>> chatRecord =
+                                value.data()!["chat"];
+                            chatRecord.get().then((value) {
+                              if (value.data()!["last_message"] == text)
+                                chatRecord.update(updateChatMessage);
+                            });
+                          });
+
+                          FirebaseFirestore.instance
+                              .collection('chat_messages')
+                              .doc(widget.chatMessage.id)
+                              .update(updateMessage);
+                        },
+                      ).show();
+                    },
               onTap: () => setState(() => _showTime = !showTime),
               splashColor: Colors.transparent,
               child: Container(
