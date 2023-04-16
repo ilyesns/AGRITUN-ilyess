@@ -1,0 +1,20 @@
+{
+  "name": "yagri",
+  "version": "1.0.0",
+  "description": "YAGRI APP",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/steyagri/AGRITUN"
+  },
+  "author": "YAGRITECH",
+  "license": "ISC"
+}
