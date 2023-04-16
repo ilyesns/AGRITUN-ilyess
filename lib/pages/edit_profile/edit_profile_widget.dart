@@ -1,3 +1,5 @@
+import 'package:yagri/auth/firebase_user_provider.dart';
+
 import '/auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
@@ -32,13 +34,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   late EditProfileModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  LatLng? currentUserLocationValue;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => EditProfileModel());
-
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'editProfile'});
     _model.yourEmailController ??=
         TextEditingController(text: currentUserEmail);
@@ -568,16 +568,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         onPressed: () async {
                           logFirebaseEvent(
                               'EDIT_PROFILE_PAGE_Button-Login_ON_TAP');
-                          currentUserLocationValue =
-                              await getCurrentUserLocation(
-                                  defaultLocation: LatLng(0.0, 0.0));
-                          logFirebaseEvent('Button-Login_backend_call');
 
+                          logFirebaseEvent('Button-Login_backend_call');
                           final usersUpdateData = createUsersRecordData(
                             displayName: _model.yourNameController.text,
                             email: _model.yourEmailController.text,
                             age: _model.yourAgeController.text,
-                            location: currentUserLocationValue,
                             typeUser: _model.specialityValue,
                           );
                           await editProfileUsersRecord.reference
