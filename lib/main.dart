@@ -28,7 +28,6 @@ void main() async {
 
   await FlutterFlowTheme.initialize();
 
-  print("aaaaaaa");
   final appState = FFAppState(); // Initialize FFAppState
   final registerNotifcation = NotificationManager();
 

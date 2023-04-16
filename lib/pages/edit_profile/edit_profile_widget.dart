@@ -1,3 +1,5 @@
+import 'package:yagri/auth/firebase_user_provider.dart';
+
 import '/auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
@@ -32,7 +34,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   late EditProfileModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  LatLng? currentUserLocationValue;
 
   @override
   void initState() {
@@ -231,7 +232,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           'vqcq3xwb' /* Change Photo */,
                         ),
                         options: FFButtonOptions(
-                          width: 140.0,
+                          width: 160.0,
                           height: 40.0,
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
@@ -418,6 +419,21 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             .asValidator(context),
                       ),
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(30.0, 0, 20.0, 0),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              'ijtklocb' /* Your Name */,
+                            ),
+                            style: FlutterFlowTheme.of(context).bodyText2,
+                          ),
+                        ),
+                      ],
+                    ),
                     Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
@@ -552,17 +568,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         onPressed: () async {
                           logFirebaseEvent(
                               'EDIT_PROFILE_PAGE_Button-Login_ON_TAP');
-                          currentUserLocationValue =
-                              await getCurrentUserLocation(
-                                  defaultLocation: LatLng(0.0, 0.0));
 
                           logFirebaseEvent('Button-Login_backend_call');
-
                           final usersUpdateData = createUsersRecordData(
                             displayName: _model.yourNameController.text,
                             email: _model.yourEmailController.text,
                             age: _model.yourAgeController.text,
-                            location: currentUserLocationValue,
                             typeUser: _model.specialityValue,
                           );
                           await editProfileUsersRecord.reference

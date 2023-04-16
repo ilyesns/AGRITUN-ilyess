@@ -348,14 +348,30 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 12.0, 0.0, 0.0),
+                                        0.0, 12.0, 0.0, 10.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Text(
-                                          profilePageUsersRecord.displayName!,
-                                          style: FlutterFlowTheme.of(context)
-                                              .title3,
+                                        Row(
+                                          children: [
+                                            Icon(Icons.person,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryColor,
+                                                size: 26),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      20.0, 0.0, 0.0, 0.0),
+                                              child: Text(
+                                                profilePageUsersRecord
+                                                    .displayName!,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .title3,
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),
@@ -363,24 +379,21 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
+                                      Icon(Icons.email,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
+                                          size: 26),
                                       if (profilePageUsersRecord.email !=
                                               null &&
                                           profilePageUsersRecord.email != '')
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 8.0, 0.0, 0.0),
+                                                  20.0, 0, 0.0, 0.0),
                                           child: Text(
                                             profilePageUsersRecord.email!,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Outfit',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryColor,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
+                                                .title3,
                                           ),
                                         ),
                                     ],
@@ -394,11 +407,25 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                         if (profilePageUsersRecord.age !=
                                                 null &&
                                             profilePageUsersRecord.age != '')
-                                          Text(
-                                            profilePageUsersRecord.age!,
-                                            textAlign: TextAlign.start,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText2,
+                                          Icon(Icons.app_registration,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryColor,
+                                              size: 26),
+                                        if (profilePageUsersRecord.age !=
+                                                null &&
+                                            profilePageUsersRecord.age != '')
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20.0, 0, 0.0, 0.0),
+                                            child: Text(
+                                              profilePageUsersRecord.age!,
+                                              textAlign: TextAlign.start,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .title3,
+                                            ),
                                           ),
                                       ],
                                     ),
@@ -413,12 +440,26 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                 null &&
                                             profilePageUsersRecord.typeUser !=
                                                 '')
-                                          Expanded(
-                                            child: AutoSizeText(
-                                              profilePageUsersRecord.typeUser!,
-                                              style:
+                                          Icon(Icons.location_history,
+                                              color:
                                                   FlutterFlowTheme.of(context)
-                                                      .title3,
+                                                      .primaryColor,
+                                              size: 26),
+                                        if (profilePageUsersRecord.typeUser !=
+                                                null &&
+                                            profilePageUsersRecord.typeUser !=
+                                                '')
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(20, 0.0, 0.0, 0.0),
+                                              child: AutoSizeText(
+                                                profilePageUsersRecord
+                                                    .typeUser!,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .title3,
+                                              ),
                                             ),
                                           ),
                                       ],
@@ -429,13 +470,32 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        FFLocalizations.of(context).getText(
-                                          '712nghwf' /* Address */,
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 8.0, 0.0, 20.0),
+                                        child: Row(
+                                          children: [
+                                            Icon(Icons.location_on,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryColor,
+                                                size: 26),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(20, 0.0, 0.0, 0.0),
+                                              child: Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  '712nghwf' /* Address */,
+                                                ),
+                                                textAlign: TextAlign.start,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .title3,
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        textAlign: TextAlign.start,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText2,
                                       ),
                                       Column(
                                         mainAxisSize: MainAxisSize.max,

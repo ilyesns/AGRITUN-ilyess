@@ -118,16 +118,13 @@ class _LocationCardWidgetState extends State<LocationCardWidget>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
     if (currentUserLocationValue == null) {
-      return Container(
-        color: FlutterFlowTheme.of(context).primaryBackground,
-        child: Center(
-          child: SizedBox(
-            width: 40.0,
-            height: 40.0,
-            child: SpinKitPumpingHeart(
-              color: FlutterFlowTheme.of(context).primaryColor,
-              size: 40.0,
-            ),
+      return Center(
+        child: SizedBox(
+          width: 70,
+          height: 70,
+          child: Image.asset(
+            'assets/images/loader.gif',
+            fit: BoxFit.fitWidth,
           ),
         ),
       );
