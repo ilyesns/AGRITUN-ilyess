@@ -125,7 +125,8 @@ class _FfNotificationWidgetState extends State<FfNotificationWidget> {
                                       width: 300,
                                       height: 70,
                                       child: Text(
-                                        "There is no notification!",
+                                        FFLocalizations.of(context).getText(
+                                            'oyf8a278'), //You have no new notifications.
                                         style: TextStyle(fontSize: 20),
                                       )),
                                 ),

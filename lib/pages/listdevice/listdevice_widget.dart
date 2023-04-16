@@ -271,7 +271,7 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
                                                   .isEmpty) {
                                                 return Center(
                                                   child: Container(
-                                                    width: 200.0,
+                                                    width: 250.0,
                                                     height: 100.0,
                                                     child:
                                                         EmptyPlatformDevWidget(
