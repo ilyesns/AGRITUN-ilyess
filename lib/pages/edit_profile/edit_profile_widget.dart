@@ -38,7 +38,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EditProfileModel());
-
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'editProfile'});
     _model.yourEmailController ??=
         TextEditingController(text: currentUserEmail);
@@ -556,6 +555,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           currentUserLocationValue =
                               await getCurrentUserLocation(
                                   defaultLocation: LatLng(0.0, 0.0));
+
                           logFirebaseEvent('Button-Login_backend_call');
 
                           final usersUpdateData = createUsersRecordData(
