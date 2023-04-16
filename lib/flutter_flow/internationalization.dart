@@ -780,6 +780,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تريد إزالة هذه الرسالة؟',
       'fr': 'Vous voulez supprimer ce message ?',
     },
+    'vsmgpoji': {
+      'en': 'Message deleted',
+      'ar': 'تم حذف الرسالة',
+      'fr': 'Message supprimé',
+    },
   },
   // InviteUser
   {
@@ -798,13 +803,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'yna04pj5': {
       'en': 'Offline',
-      'ar': '',
-      'fr': '',
+      'ar': 'غير متصل',
+      'fr': 'Hors ligne',
     },
     'yna04pj6': {
       'en': 'Online',
-      'ar': '',
-      'fr': '',
+      'ar': 'متصل',
+      'fr': 'En ligne',
     },
     '1p73p8ip': {
       'en': '•',
