@@ -1,12 +1,13 @@
-import '/auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/firebase_storage/storage.dart';
 import '/components/edit_device/edit_device_widget.dart';
-import '/components/pop_updp/pop_updp_widget.dart';
+import '/components/location_card_platform/location_card_platform_widget.dart';
 import '/components/popupwarning/popupwarning_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/upload_data.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -17,6 +18,11 @@ class PlatformDetailsModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl = '';
+
   // State field(s) for platformname widget.
   TextEditingController? platformnameController;
   String? Function(BuildContext, String?)? platformnameControllerValidator;
@@ -41,5 +47,4 @@ class PlatformDetailsModel extends FlutterFlowModel {
   }
 
   /// Additional helper methods are added here.
-
 }

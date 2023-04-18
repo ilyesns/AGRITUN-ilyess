@@ -5,6 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '../../auth/auth_util.dart';
+import '../../pages/list_device_details/list_device_details_widget.dart';
 import '../flutter_flow_theme.dart';
 import '../../backend/backend.dart';
 
@@ -206,6 +207,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'VerifyCodePhone',
               path: 'verifyCodePhone',
               builder: (context, params) => VerifyCodePhoneWidget(),
+            ),
+            FFRoute(
+              name: 'listDeviceDetails',
+              path: 'listdevicesdetails',
+              requireAuth: true,
+              builder: (context, params) => ListDeviceDetailsWidget(
+                platformRef: params.getParam('platformRef',
+                    ParamType.DocumentReference, false, ['platforms']),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
