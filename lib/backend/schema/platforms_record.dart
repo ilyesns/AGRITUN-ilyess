@@ -17,12 +17,17 @@ abstract class PlatformsRecord
 
   DateTime? get createTime;
 
+  LatLng? get location;
+
+  String? get image;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
 
-  static void _initializeBuilder(PlatformsRecordBuilder builder) =>
-      builder..platName = '';
+  static void _initializeBuilder(PlatformsRecordBuilder builder) => builder
+    ..platName = ''
+    ..image = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('platforms');
@@ -49,6 +54,8 @@ Map<String, dynamic> createPlatformsRecordData({
   DocumentReference? idUser,
   String? platName,
   DateTime? createTime,
+  LatLng? location,
+  String? image,
 }) {
   final firestoreData = serializers.toFirestore(
     PlatformsRecord.serializer,
@@ -56,7 +63,9 @@ Map<String, dynamic> createPlatformsRecordData({
       (p) => p
         ..idUser = idUser
         ..platName = platName
-        ..createTime = createTime,
+        ..createTime = createTime
+        ..location = location
+        ..image = image,
     ),
   );
 

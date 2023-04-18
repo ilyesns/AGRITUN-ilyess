@@ -307,9 +307,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Choisissez votre emplacement',
     },
     '86h536jf': {
-      'en': 'Set location',
-      'ar': 'تحديد المكان',
-      'fr': 'Définir l\'emplacement',
+      'en': 'Set your location',
+      'ar': 'حدد موقعك',
+      'fr': 'Définir votre position',
     },
     'akkovrfi': {
       'en': 'Farmer',
@@ -631,10 +631,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تفاصيل',
       'fr': 'Détails',
     },
+    'ffmk3kjl': {
+      'en': 'Change photo',
+      'ar': 'غير الصوره',
+      'fr': 'Changer la photo',
+    },
     'tj4ue3c0': {
       'en': '',
       'ar': '',
       'fr': '',
+    },
+    'twcl5t2q': {
+      'en': 'Set location',
+      'ar': 'حدد موقع',
+      'fr': 'Définir la position',
     },
     'r25r1pls': {
       'en': 'Field is required',
@@ -645,11 +655,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'List of devices',
       'ar': 'قائمة الأجهزة',
       'fr': 'Liste des appareils',
-    },
-    'y9i0gnv0': {
-      'en': 'Add Other devices',
-      'ar': 'أضف أجهزة أخرى',
-      'fr': 'Ajouter d\'autres appareils',
     },
     'r5tk24oy': {
       'en': 'Confirm',
@@ -780,6 +785,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تريد إزالة هذه الرسالة؟',
       'fr': 'Vous voulez supprimer ce message ?',
     },
+    'vsmgpoji': {
+      'en': 'Message deleted',
+      'ar': 'تم حذف الرسالة',
+      'fr': 'Message supprimé',
+    },
   },
   // InviteUser
   {
@@ -794,24 +804,74 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'bz111zc4': {
       'en': 'Devices',
       'ar': 'الأجهزة',
-      'fr': 'Dispositifs',
+      'fr': 'Appareils',
     },
     'yna04pj5': {
       'en': 'Offline',
-      'ar': '',
-      'fr': '',
+      'ar': 'غير متصل',
+      'fr': 'Hors ligne',
     },
     'yna04pj6': {
       'en': 'Online',
-      'ar': '',
-      'fr': '',
+      'ar': 'متصل',
+      'fr': 'En ligne',
     },
     '1p73p8ip': {
       'en': '•',
       'ar': '•',
       'fr': '•',
     },
+    'pqq4yvjz': {
+      'en': 'devices',
+      'ar': 'أجهزة',
+      'fr': 'Appareils',
+    },
   },
+
+  // listDeviceDetails
+  {
+    'fozmzu8u': {
+      'en': 'Add device',
+      'ar': 'اضف جهاز',
+      'fr': 'Ajouter un appareil',
+    },
+    'xz7lllc8': {
+      'en': 'Edit platform',
+      'ar': 'تغيير منصة',
+      'fr': 'Modifier la platforme',
+    },
+    '5w8b37zx': {
+      'en': 'Weather forecast',
+      'ar': 'النشرة الجوية',
+      'fr': 'Prévisions météorologiques',
+    },
+    'jgmzgl45': {
+      'en': '°C',
+      'ar': '°C',
+      'fr': '°C',
+    },
+    'dw2729br': {
+      'en': '%',
+      'ar': '٪',
+      'fr': '%',
+    },
+    'o6k4qgjr': {
+      'en': 'm/s',
+      'ar': 'm/s',
+      'fr': 'm/s',
+    },
+    'g3pft3vy': {
+      'en': 'List of devices',
+      'ar': 'قائمة الأجهزة',
+      'fr': 'Liste des appareils',
+    },
+    'b5s46ok6': {
+      'en': 'Home',
+      'ar': 'مسكن',
+      'fr': 'Maison',
+    },
+  },
+
   // PhonePage
   {
     '66rchl94': {

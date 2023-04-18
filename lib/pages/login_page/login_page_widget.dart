@@ -1310,6 +1310,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                       context)
                                                                   .prepareAuthEvent(
                                                                       true);
+
                                                               if (_model
                                                                       .passwordCreateController
                                                                       .text !=
@@ -1408,6 +1409,18 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                       'Dialog Dissmiss from callback $type');
                                                                 },
                                                               ).show();
+
+                                                              setState(() {
+                                                                _model
+                                                                    .emailRegisterController
+                                                                    ?.clear();
+                                                                _model
+                                                                    .passwordCreateController
+                                                                    ?.clear();
+                                                                _model
+                                                                    .passwordConfirmController
+                                                                    ?.clear();
+                                                              });
                                                             }
                                                           },
                                                           text: FFLocalizations

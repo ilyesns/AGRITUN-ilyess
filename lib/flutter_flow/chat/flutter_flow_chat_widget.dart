@@ -218,7 +218,8 @@ class _FFChatMessageState extends State<FFChatMessage> {
           children: [
             const SizedBox(height: 6.0),
             InkWell(
-              onLongPress: widget.chatMessage.text == "You unsent a message"
+              onLongPress: widget.chatMessage.text ==
+                      FFLocalizations.of(context).getText('vsmgpoji')
                   ? null
                   : () {
                       AwesomeDialog(
@@ -234,10 +235,12 @@ class _FFChatMessageState extends State<FFChatMessage> {
                         btnOkOnPress: () {
                           final text = widget.chatMessage.text;
                           final updateMessage = createChatMessagesRecordData(
-                              text: "You unsent a message");
+                              text: FFLocalizations.of(context)
+                                  .getText('vsmgpoji'));
 
                           final updateChatMessage = createChatsRecordData(
-                              lastMessage: "You unsent a message");
+                              lastMessage: FFLocalizations.of(context)
+                                  .getText('vsmgpoji'));
                           FirebaseFirestore.instance
                               .collection('chat_messages')
                               .doc(widget.chatMessage.id)

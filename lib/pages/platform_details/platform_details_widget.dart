@@ -1,12 +1,14 @@
-import '/auth/auth_util.dart';
+import '../../auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/firebase_storage/storage.dart';
 import '/components/edit_device/edit_device_widget.dart';
-import '/components/pop_updp/pop_updp_widget.dart';
+import '/components/location_card_platform/location_card_platform_widget.dart';
 import '/components/popupwarning/popupwarning_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/upload_data.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -92,7 +94,7 @@ class _PlatformDetailsWidgetState extends State<PlatformDetailsWidget> {
               FFLocalizations.of(context).getText(
                 't2fpz5cd' /* Details */,
               ),
-              style: FlutterFlowTheme.of(context).title3,
+              style: FlutterFlowTheme.of(context).headlineSmall,
             ),
             actions: [
               FlutterFlowIconButton(
@@ -114,9 +116,9 @@ class _PlatformDetailsWidgetState extends State<PlatformDetailsWidget> {
                     barrierColor: Color(0x00000000),
                     enableDrag: false,
                     context: context,
-                    builder: (context) {
+                    builder: (bottomSheetContext) {
                       return Padding(
-                        padding: MediaQuery.of(context).viewInsets,
+                        padding: MediaQuery.of(bottomSheetContext).viewInsets,
                         child: PopupwarningWidget(
                           idplat: platformDetailsPlatformsRecord.reference,
                         ),
@@ -130,7 +132,7 @@ class _PlatformDetailsWidgetState extends State<PlatformDetailsWidget> {
             elevation: 0.0,
           ),
           body: Align(
-            alignment: AlignmentDirectional(0.0, -0.6),
+            alignment: AlignmentDirectional(0.0, -0.85),
             child: Container(
               width: 500.0,
               decoration: BoxDecoration(
@@ -142,6 +144,162 @@ class _PlatformDetailsWidgetState extends State<PlatformDetailsWidget> {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            20.0, 4.0, 20.0, 20.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            FFButtonWidget(
+                              onPressed: () async {
+                                logFirebaseEvent(
+                                    'PLATFORM_DETAILS_Button-Login_ON_TAP');
+                                logFirebaseEvent(
+                                    'Button-Login_upload_media_to_firebase');
+                                final selectedMedia =
+                                    await selectMediaWithSourceBottomSheet(
+                                  context: context,
+                                  allowPhoto: true,
+                                );
+                                if (selectedMedia != null &&
+                                    selectedMedia.every((m) =>
+                                        validateFileFormat(
+                                            m.storagePath, context))) {
+                                  setState(() => _model.isDataUploading = true);
+                                  var selectedUploadedFiles =
+                                      <FFUploadedFile>[];
+                                  var downloadUrls = <String>[];
+                                  try {
+                                    showUploadMessage(
+                                      context,
+                                      'Uploading file...',
+                                      showLoading: true,
+                                    );
+                                    selectedUploadedFiles = selectedMedia
+                                        .map((m) => FFUploadedFile(
+                                              name:
+                                                  m.storagePath.split('/').last,
+                                              bytes: m.bytes,
+                                              height: m.dimensions?.height,
+                                              width: m.dimensions?.width,
+                                            ))
+                                        .toList();
+
+                                    downloadUrls = (await Future.wait(
+                                      selectedMedia.map(
+                                        (m) async => await uploadData(
+                                            m.storagePath, m.bytes),
+                                      ),
+                                    ))
+                                        .where((u) => u != null)
+                                        .map((u) => u!)
+                                        .toList();
+                                  } finally {
+                                    ScaffoldMessenger.of(context)
+                                        .hideCurrentSnackBar();
+                                    _model.isDataUploading = false;
+                                  }
+                                  if (selectedUploadedFiles.length ==
+                                          selectedMedia.length &&
+                                      downloadUrls.length ==
+                                          selectedMedia.length) {
+                                    setState(() {
+                                      _model.uploadedLocalFile =
+                                          selectedUploadedFiles.first;
+                                      _model.uploadedFileUrl =
+                                          downloadUrls.first;
+                                    });
+                                    showUploadMessage(context, 'Success!');
+                                  } else {
+                                    setState(() {});
+                                    showUploadMessage(
+                                        context, 'Failed to upload data');
+                                    return;
+                                  }
+                                }
+
+                                logFirebaseEvent('Button-Login_backend_call');
+
+                                final platformsUpdateData =
+                                    createPlatformsRecordData(
+                                  image: _model.uploadedFileUrl,
+                                );
+                                await widget.platformDetails!
+                                    .update(platformsUpdateData);
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                'ffmk3kjl' /* Change image */,
+                              ),
+                              options: FFButtonOptions(
+                                width: 130.0,
+                                height: 40.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color: FlutterFlowTheme.of(context).info,
+                                    ),
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).info,
+                                  width: 3.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                            ),
+                            FFButtonWidget(
+                              onPressed: () async {
+                                logFirebaseEvent(
+                                    'PLATFORM_DETAILS_SET_LOCATION_BTN_ON_TAP');
+
+                                logFirebaseEvent('Button_bottom_sheet');
+                                await showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  enableDrag: false,
+                                  context: context,
+                                  builder: (bottomSheetContext) {
+                                    return Padding(
+                                      padding: MediaQuery.of(bottomSheetContext)
+                                          .viewInsets,
+                                      child: LocationCardPlatformWidget(
+                                        platformRef: widget.platformDetails,
+                                      ),
+                                    );
+                                  },
+                                ).then((value) => setState(() {}));
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                '86h536jf' /* Set location */,
+                              ),
+                              options: FFButtonOptions(
+                                width: 130,
+                                height: 40,
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                                iconPadding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                textStyle: TextStyle(
+                                  color: FlutterFlowTheme.of(context).primary,
+                                ),
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  width: 3,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                       Form(
                         key: _model.formKey,
                         autovalidateMode: AutovalidateMode.disabled,
@@ -156,7 +314,7 @@ class _PlatformDetailsWidgetState extends State<PlatformDetailsWidget> {
                             obscureText: false,
                             decoration: InputDecoration(
                               labelStyle:
-                                  FlutterFlowTheme.of(context).bodyText2,
+                                  FlutterFlowTheme.of(context).bodySmall,
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context)
@@ -198,7 +356,7 @@ class _PlatformDetailsWidgetState extends State<PlatformDetailsWidget> {
                               ),
                             ),
                             style: FlutterFlowTheme.of(context)
-                                .subtitle2
+                                .titleSmall
                                 .override(
                                   fontFamily: 'Outfit',
                                   color:
@@ -224,7 +382,7 @@ class _PlatformDetailsWidgetState extends State<PlatformDetailsWidget> {
                                   '70838u9i' /* List of devices */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Outfit',
                                       fontSize: 18.0,
@@ -309,7 +467,7 @@ class _PlatformDetailsWidgetState extends State<PlatformDetailsWidget> {
                                                   columnDevicesRecord.devName!,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Outfit',
                                                         fontSize: 18.0,
@@ -333,12 +491,12 @@ class _PlatformDetailsWidgetState extends State<PlatformDetailsWidget> {
                                                         barrierColor:
                                                             Color(0x00000000),
                                                         context: context,
-                                                        builder: (context) {
+                                                        builder:
+                                                            (bottomSheetContext) {
                                                           return Padding(
-                                                            padding:
-                                                                MediaQuery.of(
-                                                                        context)
-                                                                    .viewInsets,
+                                                            padding: MediaQuery.of(
+                                                                    bottomSheetContext)
+                                                                .viewInsets,
                                                             child:
                                                                 EditDeviceWidget(
                                                               idDevice:
@@ -366,58 +524,6 @@ class _PlatformDetailsWidgetState extends State<PlatformDetailsWidget> {
                                         }),
                                       );
                                     },
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 4.0, 20.0, 20.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 5.0, 0.0),
-                                        child: InkWell(
-                                          onTap: () async {
-                                            logFirebaseEvent(
-                                                'PLATFORM_DETAILS_Text_izk6s1q8_ON_TAP');
-                                            logFirebaseEvent(
-                                                'Text_bottom_sheet');
-                                            await showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              barrierColor: Color(0x00000000),
-                                              context: context,
-                                              builder: (context) {
-                                                return Padding(
-                                                  padding:
-                                                      MediaQuery.of(context)
-                                                          .viewInsets,
-                                                  child: PopUpdpWidget(
-                                                    idPlat:
-                                                        platformDetailsPlatformsRecord
-                                                            .reference,
-                                                  ),
-                                                );
-                                              },
-                                            ).then((value) => setState(() {}));
-                                          },
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'y9i0gnv0' /* Add Other devices */,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Outfit',
-                                                  color: Color(0xFF537C9C),
-                                                  fontSize: 20.0,
-                                                ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
                                   ),
                                 ),
                               ],
@@ -453,8 +559,8 @@ class _PlatformDetailsWidgetState extends State<PlatformDetailsWidget> {
                                 0.0, 0.0, 0.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primaryColor,
-                            textStyle: FlutterFlowTheme.of(context).subtitle2,
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context).titleSmall,
                             elevation: 2.0,
                             borderSide: BorderSide(
                               color: Colors.transparent,

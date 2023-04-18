@@ -43,6 +43,20 @@ class _$PlatformsRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(DateTime)));
     }
+    value = object.location;
+    if (value != null) {
+      result
+        ..add('location')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(LatLng)));
+    }
+    value = object.image;
+    if (value != null) {
+      result
+        ..add('image')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -80,6 +94,14 @@ class _$PlatformsRecordSerializer
           result.createTime = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime?;
           break;
+        case 'location':
+          result.location = serializers.deserialize(value,
+              specifiedType: const FullType(LatLng)) as LatLng?;
+          break;
+        case 'image':
+          result.image = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -101,12 +123,22 @@ class _$PlatformsRecord extends PlatformsRecord {
   @override
   final DateTime? createTime;
   @override
+  final LatLng? location;
+  @override
+  final String? image;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$PlatformsRecord([void Function(PlatformsRecordBuilder)? updates]) =>
       (new PlatformsRecordBuilder()..update(updates))._build();
 
-  _$PlatformsRecord._({this.idUser, this.platName, this.createTime, this.ffRef})
+  _$PlatformsRecord._(
+      {this.idUser,
+      this.platName,
+      this.createTime,
+      this.location,
+      this.image,
+      this.ffRef})
       : super._();
 
   @override
@@ -124,6 +156,8 @@ class _$PlatformsRecord extends PlatformsRecord {
         idUser == other.idUser &&
         platName == other.platName &&
         createTime == other.createTime &&
+        location == other.location &&
+        image == other.image &&
         ffRef == other.ffRef;
   }
 
@@ -133,6 +167,8 @@ class _$PlatformsRecord extends PlatformsRecord {
     _$hash = $jc(_$hash, idUser.hashCode);
     _$hash = $jc(_$hash, platName.hashCode);
     _$hash = $jc(_$hash, createTime.hashCode);
+    _$hash = $jc(_$hash, location.hashCode);
+    _$hash = $jc(_$hash, image.hashCode);
     _$hash = $jc(_$hash, ffRef.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -144,6 +180,8 @@ class _$PlatformsRecord extends PlatformsRecord {
           ..add('idUser', idUser)
           ..add('platName', platName)
           ..add('createTime', createTime)
+          ..add('location', location)
+          ..add('image', image)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -165,6 +203,14 @@ class PlatformsRecordBuilder
   DateTime? get createTime => _$this._createTime;
   set createTime(DateTime? createTime) => _$this._createTime = createTime;
 
+  LatLng? _location;
+  LatLng? get location => _$this._location;
+  set location(LatLng? location) => _$this._location = location;
+
+  String? _image;
+  String? get image => _$this._image;
+  set image(String? image) => _$this._image = image;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -179,6 +225,8 @@ class PlatformsRecordBuilder
       _idUser = $v.idUser;
       _platName = $v.platName;
       _createTime = $v.createTime;
+      _location = $v.location;
+      _image = $v.image;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -205,6 +253,8 @@ class PlatformsRecordBuilder
             idUser: idUser,
             platName: platName,
             createTime: createTime,
+            location: location,
+            image: image,
             ffRef: ffRef);
     replace(_$result);
     return _$result;
