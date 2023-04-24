@@ -57,6 +57,12 @@ class _$PlatformsRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.sharedUser;
+    if (value != null) {
+      result
+        ..add('sharedUser')
+        ..add(value);
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -89,6 +95,28 @@ class _$PlatformsRecordSerializer
         case 'platName':
           result.platName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
+          break;
+        case 'sharedUser':
+          final List<Map<String, dynamic>> sharedUserlist =
+              value as List<Map<String, dynamic>>;
+
+          sharedUserlist.map((e) {
+            final BuiltMap<String, dynamic> sharedUserMap =
+                BuiltMap<String, dynamic>(e.map((key, value) {
+              if (value is DocumentReference ||
+                  value is bool ||
+                  value is int ||
+                  value is double ||
+                  value is String) {
+                return MapEntry(key, value);
+              } else {
+                throw ArgumentError('Invalid key or value type in energy map');
+              }
+            }));
+
+            return sharedUserMap;
+          }).toList();
+          result.sharedUser = sharedUserlist;
           break;
         case 'createTime':
           result.createTime = serializers.deserialize(value,
@@ -128,6 +156,8 @@ class _$PlatformsRecord extends PlatformsRecord {
   final String? image;
   @override
   final DocumentReference<Object?>? ffRef;
+  @override
+  final List<Map<String, dynamic>>? sharedUser;
 
   factory _$PlatformsRecord([void Function(PlatformsRecordBuilder)? updates]) =>
       (new PlatformsRecordBuilder()..update(updates))._build();
@@ -138,6 +168,7 @@ class _$PlatformsRecord extends PlatformsRecord {
       this.createTime,
       this.location,
       this.image,
+      this.sharedUser,
       this.ffRef})
       : super._();
 
@@ -158,6 +189,7 @@ class _$PlatformsRecord extends PlatformsRecord {
         createTime == other.createTime &&
         location == other.location &&
         image == other.image &&
+        sharedUser == other.sharedUser &&
         ffRef == other.ffRef;
   }
 
@@ -169,6 +201,7 @@ class _$PlatformsRecord extends PlatformsRecord {
     _$hash = $jc(_$hash, createTime.hashCode);
     _$hash = $jc(_$hash, location.hashCode);
     _$hash = $jc(_$hash, image.hashCode);
+    _$hash = $jc(_$hash, sharedUser.hashCode);
     _$hash = $jc(_$hash, ffRef.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -182,6 +215,7 @@ class _$PlatformsRecord extends PlatformsRecord {
           ..add('createTime', createTime)
           ..add('location', location)
           ..add('image', image)
+          ..add('sharedUser', sharedUser)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -215,6 +249,10 @@ class PlatformsRecordBuilder
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
+  List<Map<String, dynamic>>? _sharedUser;
+  List<Map<String, dynamic>>? get sharedUser => _$this._sharedUser ??= [{}];
+  set sharedUser(List<Map<String, dynamic>>? sharedUser) =>
+      _$this._sharedUser = sharedUser;
   PlatformsRecordBuilder() {
     PlatformsRecord._initializeBuilder(this);
   }
@@ -227,6 +265,7 @@ class PlatformsRecordBuilder
       _createTime = $v.createTime;
       _location = $v.location;
       _image = $v.image;
+      _sharedUser = $v.sharedUser;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -255,6 +294,7 @@ class PlatformsRecordBuilder
             createTime: createTime,
             location: location,
             image: image,
+            sharedUser: sharedUser,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

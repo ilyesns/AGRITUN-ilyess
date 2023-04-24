@@ -376,7 +376,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 MqttApiListClientCall.call(),
                                             builder: (context, snapshot) {
                                               // Customize what your widget looks like when it's loading.
-                                              if (!snapshot.hasData) {
+                                              if (snapshot.connectionState ==
+                                                  ConnectionState.waiting) {
                                                 return Center(
                                                   child: SizedBox(
                                                     width: 70,
@@ -388,6 +389,39 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   ),
                                                 );
                                               }
+                                              if (snapshot.hasError ||
+                                                  snapshot.data!.jsonBody ==
+                                                      null) {
+                                                return Container(
+                                                  width: 200,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        blurRadius: 8,
+                                                        color:
+                                                            Color(0x230E151B),
+                                                        offset: Offset(0, 2),
+                                                      )
+                                                    ],
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                  ),
+                                                  child: Center(
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Text(
+                                                          'Please check your network connection.'),
+                                                    ),
+                                                  ),
+                                                );
+                                              }
+
                                               final devicecardMqttApiListClientResponse =
                                                   snapshot.data!;
                                               return InkWell(
@@ -495,7 +529,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                                 listViewDevicesRecord.sn_device,
                                                                                 (MqttApiListClientCall.listclient(
                                                                                   devicecardMqttApiListClientResponse.jsonBody,
-                                                                                ) as List)
+                                                                                ) as List<dynamic>?)!
                                                                                     .map<String>((s) => s.toString())
                                                                                     .toList()
                                                                                     .map((e) => e.toString())
@@ -527,7 +561,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                                           listViewDevicesRecord.sn_device,
                                                                                           (MqttApiListClientCall.listclient(
                                                                                             devicecardMqttApiListClientResponse.jsonBody,
-                                                                                          ) as List)
+                                                                                          ) as List<dynamic>?)!
                                                                                               .map<String>((s) => s.toString())
                                                                                               .toList()
                                                                                               .map((e) => e.toString())
@@ -631,6 +665,35 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               child: Image.asset(
                                                 'assets/images/loader.gif',
                                                 fit: BoxFit.fitWidth,
+                                              ),
+                                            ),
+                                          );
+                                        }
+
+                                        if (snapshot.hasError ||
+                                            snapshot.data!.jsonBody == null) {
+                                          return Container(
+                                            width: 200,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  blurRadius: 8,
+                                                  color: Color(0x230E151B),
+                                                  offset: Offset(0, 2),
+                                                )
+                                              ],
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            child: Center(
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                    'Please check your network connection.'),
                                               ),
                                             ),
                                           );

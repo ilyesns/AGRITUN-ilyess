@@ -11,6 +11,29 @@ import '../backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../auth/auth_util.dart';
 
+// Chat gpt function
+dynamic saveChatHistory(
+  dynamic chatHistory,
+  dynamic newChat,
+) {
+  // If chatHistory isn't a list, make it a list and then add newChat
+  print(chatHistory);
+  print(newChat);
+  if (chatHistory is List) {
+    chatHistory.add(newChat);
+    return chatHistory;
+  } else {
+    return [newChat];
+  }
+}
+
+dynamic convertToJSON(String prompt) {
+  // take the prompt and return a JSON with form [{"role": "user", "content": prompt}]
+  return json.decode('{"role": "user", "content": "$prompt"}');
+}
+
+// Chat gpt function End
+
 String latitude(LatLng? userLocation) {
   // Add your function code here!
   if (userLocation != null) {
@@ -77,7 +100,7 @@ String userUidsubstring(String userUid) {
 
 bool? apiListClient(
   String? idDevice,
-  List<String>? listclient,
+  List<dynamic>? listclient,
 ) {
   return listclient!.contains(idDevice);
 }

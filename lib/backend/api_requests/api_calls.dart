@@ -84,11 +84,15 @@ class MqttApiListClientCall {
     return ApiCallResponse.fromCloudCallResponse(response);
   }
 
-  static dynamic listclient(dynamic response) => getJsonField(
-        response,
-        r'''$.data[:].clientid''',
-        true,
-      );
+  static dynamic listclient(dynamic response) {
+    return response != null
+        ? getJsonField(
+            response,
+            r'''$.data[:].clientid''',
+            true,
+          )
+        : null;
+  }
 }
 
 class MqttApiSendCmdCall {
@@ -110,6 +114,60 @@ class MqttApiSendCmdCall {
     );
     return ApiCallResponse.fromCloudCallResponse(response);
   }
+}
+
+/// Start OpenAI ChatGPT Group Code
+
+class OpenAIChatGPTGroup {
+  static String baseUrl = 'https://api.openai.com/v1';
+  static Map<String, String> headers = {
+    'Content-Type': 'application/json; charset=UTF-8',
+    'accept': 'application/json; charset=UTF-8',
+  };
+  static SendFullPromptCall sendFullPromptCall = SendFullPromptCall();
+}
+
+class SendFullPromptCall {
+  Future<ApiCallResponse> call({
+    String? apiKey = '',
+    dynamic? promptJson,
+  }) {
+    final prompt = _serializeJson(promptJson);
+    final body = '''
+{
+  "model": "gpt-3.5-turbo",
+  "messages": ${prompt}
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Send Full Prompt',
+      apiUrl: '${OpenAIChatGPTGroup.baseUrl}/chat/completions',
+      callType: ApiCallType.POST,
+      headers: {
+        ...OpenAIChatGPTGroup.headers,
+        'Authorization': 'Bearer ${apiKey}',
+      },
+      params: {},
+      body: body,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic createdTimestamp(dynamic response) => getJsonField(
+        response,
+        r'''$.created''',
+      );
+  dynamic role(dynamic response) => getJsonField(
+        response,
+        r'''$.choices[:].message.role''',
+      );
+  dynamic content(dynamic response) => getJsonField(
+        response,
+        r'''$.choices[:].message.content''',
+      );
 }
 
 class ApiPagingParams {

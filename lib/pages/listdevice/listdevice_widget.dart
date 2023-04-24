@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../auth/auth_util.dart';
 
@@ -103,9 +104,14 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
             ),
             child: StreamBuilder<List<PlatformsRecord>>(
               stream: queryPlatformsRecord(
-                queryBuilder: (platformsRecord) => platformsRecord
-                    .where('idUser', isEqualTo: currentUserReference),
+                queryBuilder: (platformsRecord) =>
+                    platformsRecord.where("sharedUser", arrayContainsAny: [
+                  {"idUser": currentUserReference, "owner": false},
+                  {"idUser": currentUserReference, "owner": true},
+                ]),
               ),
+              /*
+              */
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
                 if (!snapshot.hasData) {
@@ -143,6 +149,16 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
                   itemBuilder: (context, gridViewIndex) {
                     final gridViewPlatformsRecord =
                         gridViewPlatformsRecordList[gridViewIndex];
+
+                    bool isShared = false;
+
+                    gridViewPlatformsRecord.sharedUser!.forEach((element) {
+                      if (element["owner"] == false &&
+                          element["idUser"] == currentUserReference) {
+                        isShared = true;
+                      }
+                    });
+
                     return Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(10, 20, 10, 0),
                       child: Material(
@@ -157,75 +173,109 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
                                   .secondaryBackground,
                               image: DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: Image.network(
-                                          gridViewPlatformsRecord!.image ?? "")
+                                  image: Image.network(gridViewPlatformsRecord
+                                              .image ??
+                                          "https://images.unsplash.com/photo-1681504566975-08c19ac82e54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80")
                                       .image)),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 1.8,
-                            height: MediaQuery.of(context).size.height * 2,
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(40, 9, 1, 1),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(7, 13, 7, 7),
-                              child: InkWell(
-                                onTap: () async {
-                                  logFirebaseEvent(
-                                      'LISTDEVICE_PAGE_padding_ON_TAP');
-                                  logFirebaseEvent('padding_navigate_to');
-
-                                  context.pushNamed(
-                                    'listDeviceDetails',
-                                    queryParams: {
-                                      'platformRef': serializeParam(
-                                        gridViewPlatformsRecord.reference,
-                                        ParamType.DocumentReference,
-                                      ),
-                                    }.withoutNulls,
-                                  );
-                                },
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                          child: Stack(children: [
+                            if (isShared)
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 7, 0, 0),
-                                      child: Text(
-                                        gridViewPlatformsRecord.platName!,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                                fontFamily: 'Outfit',
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white),
+                                    Icon(
+                                      Icons.six_ft_apart_sharp,
+                                      color: Colors.deepOrangeAccent,
+                                      size: 30,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            Container(
+                              width: MediaQuery.of(context).size.width * 1.8,
+                              height: MediaQuery.of(context).size.height * 2,
+                              decoration: BoxDecoration(
+                                color: Color.fromARGB(40, 9, 1, 1),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(7, 13, 7, 7),
+                                child: InkWell(
+                                  onTap: () async {
+                                    logFirebaseEvent(
+                                        'LISTDEVICE_PAGE_padding_ON_TAP');
+                                    logFirebaseEvent('padding_navigate_to');
+
+                                    context.pushNamed(
+                                      'listDeviceDetails',
+                                      queryParams: {
+                                        'platformRef': serializeParam(
+                                          gridViewPlatformsRecord.reference,
+                                          ParamType.DocumentReference,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 7, 0, 0),
+                                        child: Text(
+                                          gridViewPlatformsRecord.platName!,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                  fontFamily: 'Outfit',
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
+                                        ),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 7, 0, 0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          FutureBuilder<int>(
-                                            future: queryDevicesRecordCount(
-                                              queryBuilder: (devicesRecord) =>
-                                                  devicesRecord.where('idPlat',
-                                                      isEqualTo:
-                                                          gridViewPlatformsRecord
-                                                              .reference),
-                                            ),
-                                            builder: (context, snapshot) {
-                                              // Customize what your widget looks like when it's loading.
-                                              if (!snapshot.hasData) {
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 7, 0, 0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            FutureBuilder<int>(
+                                              future: queryDevicesRecordCount(
+                                                queryBuilder: (devicesRecord) =>
+                                                    devicesRecord.where(
+                                                        'idPlat',
+                                                        isEqualTo:
+                                                            gridViewPlatformsRecord
+                                                                .reference),
+                                              ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Text(
+                                                    "0",
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                  );
+                                                }
+                                                int textCount = snapshot.data!;
+
                                                 return Text(
-                                                  "0",
+                                                  textCount.toString(),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -236,11 +286,16 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
                                                             FontWeight.bold,
                                                       ),
                                                 );
-                                              }
-                                              int textCount = snapshot.data!;
-
-                                              return Text(
-                                                textCount.toString(),
+                                              },
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(3, 0, 0, 0),
+                                              child: Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'pqq4yvjz' /* devices */,
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -250,37 +305,17 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
-                                              );
-                                            },
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    3, 0, 0, 0),
-                                            child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'pqq4yvjz' /* devices */,
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
+                          ]),
                         ),
                       ),
                     );
