@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'index.dart';
 import 'serializers.dart';
@@ -12,6 +13,7 @@ abstract class PlatformsRecord
       _$platformsRecordSerializer;
 
   DocumentReference? get idUser;
+  List<Map<String, dynamic>>? get sharedUser;
 
   String? get platName;
 
@@ -50,13 +52,13 @@ abstract class PlatformsRecord
           {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
-Map<String, dynamic> createPlatformsRecordData({
-  DocumentReference? idUser,
-  String? platName,
-  DateTime? createTime,
-  LatLng? location,
-  String? image,
-}) {
+Map<String, dynamic> createPlatformsRecordData(
+    {DocumentReference? idUser,
+    String? platName,
+    DateTime? createTime,
+    LatLng? location,
+    String? image,
+    List<Map<String, dynamic>>? sharedUser}) {
   final firestoreData = serializers.toFirestore(
     PlatformsRecord.serializer,
     PlatformsRecord(
@@ -65,6 +67,7 @@ Map<String, dynamic> createPlatformsRecordData({
         ..platName = platName
         ..createTime = createTime
         ..location = location
+        ..sharedUser = sharedUser
         ..image = image,
     ),
   );

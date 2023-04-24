@@ -26,6 +26,9 @@ abstract class YdRecord implements Built<YdRecord, YdRecordBuilder> {
   @BuiltValueField(wireName: 'POWERS')
   Map<String, String>? get powers;
 
+  @BuiltValueField(wireName: 'Humidity')
+  Map<String, String>? get humidity;
+
   @BuiltValueField(wireName: 'Wifi')
   Map<String, dynamic>? get wifi;
 
@@ -45,6 +48,7 @@ abstract class YdRecord implements Built<YdRecord, YdRecordBuilder> {
     ..yfp = ''
     ..idf = ''
     ..powers = {}
+    ..humidity = {}
     ..wifi = {}
     ..uptime = ''
     ..energy = {};

@@ -1,3 +1,6 @@
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../../flutter_flow/flutter_flow_widgets.dart';
 import '/auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/chat/index.dart';
@@ -49,6 +52,33 @@ class _MessagePageWidgetState extends State<MessagePageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         appBar: AppBar(
+          leading: InkWell(
+            onTap: () {
+              context.pushNamed('GPTFlow');
+            },
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(2, 0, 0, 0),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FaIcon(
+                      FontAwesomeIcons.robot,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      size: 24,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: Text(
+                        "Chat with AI",
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                        ),
+                      ),
+                    ),
+                  ]),
+            ),
+          ),
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           automaticallyImplyLeading: false,
           title: Text(

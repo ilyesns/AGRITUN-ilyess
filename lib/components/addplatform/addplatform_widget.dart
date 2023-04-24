@@ -28,8 +28,6 @@ class _AddplatformWidgetState extends State<AddplatformWidget>
     with TickerProviderStateMixin {
   late AddplatformModel _model;
 
-  LatLng? currentUserLocationValue;
-
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -344,9 +342,7 @@ class _AddplatformWidgetState extends State<AddplatformWidget>
                                 onPressed: () async {
                                   logFirebaseEvent(
                                       'ADDPLATFORM_COMP_ADD_PLATFORM_BTN_ON_TAP');
-                                  currentUserLocationValue =
-                                      await getCurrentUserLocation(
-                                          defaultLocation: LatLng(0.0, 0.0));
+
                                   logFirebaseEvent('Button_validate_form');
                                   if (_model.formKey.currentState == null ||
                                       !_model.formKey.currentState!
@@ -357,13 +353,15 @@ class _AddplatformWidgetState extends State<AddplatformWidget>
 
                                   final platformsCreateData =
                                       createPlatformsRecordData(
-                                    idUser: currentUserReference,
-                                    platName:
-                                        _model.platformnameController.text,
-                                    createTime: getCurrentTimestamp,
-                                    location: currentUserLocationValue,
-                                    image: '',
-                                  );
+                                          platName: _model
+                                              .platformnameController.text,
+                                          createTime: getCurrentTimestamp,
+                                          sharedUser: [
+                                        {
+                                          "idUser": currentUserReference,
+                                          "owner": true
+                                        },
+                                      ]);
                                   await PlatformsRecord.collection
                                       .doc()
                                       .set(platformsCreateData);

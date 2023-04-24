@@ -62,6 +62,14 @@ class _$YdRecordSerializer implements StructuredSerializer<YdRecord> {
             specifiedType:
                 const FullType(BuiltList, const [const FullType(Map)])));
     }
+    value = object.humidity;
+    if (value != null) {
+      result
+        ..add('Humidity')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(Map)])));
+    }
     value = object.wifi;
     if (value != null) {
       result
@@ -129,6 +137,14 @@ class _$YdRecordSerializer implements StructuredSerializer<YdRecord> {
           );
           result.powers = powersMap.toMap();
           break;
+        case 'Humidity':
+          final Map mapStruct = value as Map;
+          final BuiltMap<String, String> humidityMap = BuiltMap<String, String>(
+            mapStruct
+                .map((key, value) => MapEntry(key as String, value as String)),
+          );
+          result.humidity = humidityMap.toMap();
+          break;
 
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
@@ -187,6 +203,8 @@ class _$YdRecord extends YdRecord {
   @override
   final Map<String, String>? powers;
   @override
+  final Map<String, String>? humidity;
+  @override
   final Map<String, dynamic>? wifi;
   @override
   final Map<String, dynamic>? energy;
@@ -202,6 +220,7 @@ class _$YdRecord extends YdRecord {
     this.yfp,
     this.idf,
     this.powers,
+    this.humidity,
     this.wifi,
     this.uptime,
     this.energy,
@@ -224,6 +243,7 @@ class _$YdRecord extends YdRecord {
         yfp == other.yfp &&
         idf == other.idf &&
         powers == other.powers &&
+        humidity == other.humidity &&
         wifi == other.wifi &&
         energy == other.energy &&
         uptime == other.uptime &&
@@ -250,6 +270,7 @@ class _$YdRecord extends YdRecord {
           ..add('yfp', yfp)
           ..add('idf', idf)
           ..add('powers', powers)
+          ..add('humidity', humidity)
           ..add('uptime', uptime)
           ..add('wifi', wifi)
           ..add('energy', energy)
@@ -286,6 +307,11 @@ class YdRecordBuilder implements Builder<YdRecord, YdRecordBuilder> {
       _$this._powers ??= new Map<String, String>();
   set powers(Map<String, String>? powers) => _$this._powers = powers;
 
+  Map<String, String>? _humidity;
+  Map<String, String>? get humidity =>
+      _$this._humidity ??= new Map<String, String>();
+  set humidity(Map<String, String>? humidity) => _$this._humidity = humidity;
+
   Map<String, dynamic>? _wifi;
   Map<String, dynamic>? get wifi => _$this._wifi ??= new Map<String, dynamic>();
   set wifi(Map<String, dynamic>? wifi) => _$this._wifi = wifi;
@@ -311,6 +337,7 @@ class YdRecordBuilder implements Builder<YdRecord, YdRecordBuilder> {
       _yfp = $v.yfp;
       _idf = $v.idf;
       _powers = $v.powers;
+      _humidity = $v.humidity;
       _wifi = $v.wifi;
       _energy = $v.energy;
       _ffRef = $v.ffRef;
@@ -344,6 +371,7 @@ class YdRecordBuilder implements Builder<YdRecord, YdRecordBuilder> {
               idf: idf,
               uptime: uptime,
               powers: _powers,
+              humidity: _humidity,
               wifi: _wifi,
               energy: _energy,
               ffRef: ffRef);

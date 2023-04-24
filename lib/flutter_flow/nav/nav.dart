@@ -5,6 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '../../auth/auth_util.dart';
+import '../../pages/g_p_t/g_p_t_flow_widget.dart';
 import '../../pages/list_device_details/list_device_details_widget.dart';
 import '../flutter_flow_theme.dart';
 import '../../backend/backend.dart';
@@ -216,6 +217,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 platformRef: params.getParam('platformRef',
                     ParamType.DocumentReference, false, ['platforms']),
               ),
+            ),
+            FFRoute(
+              name: 'GPTFlow',
+              path: 'gPTFlow',
+              builder: (context, params) => GPTFlowWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

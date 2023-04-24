@@ -281,13 +281,29 @@ class _ListDeviceDetailsWidgetState extends State<ListDeviceDetailsWidget> {
                                       );
                                     }
 
-                                    if (snapshot.data == null) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 150,
-                                          height: 70,
-                                          child: Text(
-                                              "Something went wrong , try again"),
+                                    if (snapshot.hasError ||
+                                        snapshot.data!.jsonBody == null) {
+                                      return Container(
+                                        width: 200,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 8,
+                                              color: Color(0x230E151B),
+                                              offset: Offset(0, 2),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                        child: Center(
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                                'Please check your network connection.'),
+                                          ),
                                         ),
                                       );
                                     }
@@ -675,13 +691,31 @@ class _ListDeviceDetailsWidgetState extends State<ListDeviceDetailsWidget> {
                                             );
                                           }
 
-                                          if (snapshot.data == null) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 150,
-                                                height: 70,
-                                                child: Text(
-                                                    "Something went wrong , try again"),
+                                          if (snapshot.hasError ||
+                                              snapshot.data!.jsonBody == null) {
+                                            return Container(
+                                              width: 200,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    blurRadius: 8,
+                                                    color: Color(0x230E151B),
+                                                    offset: Offset(0, 2),
+                                                  )
+                                                ],
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              child: Center(
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                      'Please check your network connection.'),
+                                                ),
                                               ),
                                             );
                                           }

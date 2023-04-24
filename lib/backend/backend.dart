@@ -367,7 +367,7 @@ Stream<List<YdRecord>> queryYdRecord({
       YdRecord.collection,
       YdRecord.serializer,
       queryBuilder: queryBuilder,
-      limit: limit,
+      limit: 3,
       singleRecord: singleRecord,
     );
 
