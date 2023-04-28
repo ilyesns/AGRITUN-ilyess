@@ -356,7 +356,7 @@ class _AddplatformWidgetState extends State<AddplatformWidget>
                                           platName: _model
                                               .platformnameController.text,
                                           createTime: getCurrentTimestamp,
-                                          sharedUser: [
+                                          users: [
                                         {
                                           "idUser": currentUserReference,
                                           "owner": true

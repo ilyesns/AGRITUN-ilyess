@@ -105,7 +105,7 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
             child: StreamBuilder<List<PlatformsRecord>>(
               stream: queryPlatformsRecord(
                 queryBuilder: (platformsRecord) =>
-                    platformsRecord.where("sharedUser", arrayContainsAny: [
+                    platformsRecord.where("users", arrayContainsAny: [
                   {"idUser": currentUserReference, "owner": false},
                   {"idUser": currentUserReference, "owner": true},
                 ]),
@@ -152,7 +152,7 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
 
                     bool isShared = false;
 
-                    gridViewPlatformsRecord.sharedUser!.forEach((element) {
+                    gridViewPlatformsRecord.users!.forEach((element) {
                       if (element["owner"] == false &&
                           element["idUser"] == currentUserReference) {
                         isShared = true;
@@ -173,10 +173,14 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
                                   .secondaryBackground,
                               image: DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: Image.network(gridViewPlatformsRecord
-                                              .image ??
-                                          "https://images.unsplash.com/photo-1681504566975-08c19ac82e54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80")
-                                      .image)),
+                                  image: gridViewPlatformsRecord.image !=
+                                              null &&
+                                          gridViewPlatformsRecord.image != ""
+                                      ? Image.network(gridViewPlatformsRecord
+                                              .image as String)
+                                          .image
+                                      : Image.asset('assets/images/farm_2.jpg')
+                                          .image)),
                           child: Stack(children: [
                             if (isShared)
                               Padding(

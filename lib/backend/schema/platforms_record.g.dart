@@ -57,10 +57,10 @@ class _$PlatformsRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.sharedUser;
+    value = object.users;
     if (value != null) {
       result
-        ..add('sharedUser')
+        ..add('users')
         ..add(value);
     }
     value = object.ffRef;
@@ -96,12 +96,12 @@ class _$PlatformsRecordSerializer
           result.platName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'sharedUser':
-          final List<Map<String, dynamic>> sharedUserlist =
+        case 'users':
+          final List<Map<String, dynamic>> userslist =
               value as List<Map<String, dynamic>>;
 
-          sharedUserlist.map((e) {
-            final BuiltMap<String, dynamic> sharedUserMap =
+          userslist.map((e) {
+            final BuiltMap<String, dynamic> usersMap =
                 BuiltMap<String, dynamic>(e.map((key, value) {
               if (value is DocumentReference ||
                   value is bool ||
@@ -114,9 +114,9 @@ class _$PlatformsRecordSerializer
               }
             }));
 
-            return sharedUserMap;
+            return usersMap;
           }).toList();
-          result.sharedUser = sharedUserlist;
+          result.users = userslist;
           break;
         case 'createTime':
           result.createTime = serializers.deserialize(value,
@@ -157,7 +157,7 @@ class _$PlatformsRecord extends PlatformsRecord {
   @override
   final DocumentReference<Object?>? ffRef;
   @override
-  final List<Map<String, dynamic>>? sharedUser;
+  final List<Map<String, dynamic>>? users;
 
   factory _$PlatformsRecord([void Function(PlatformsRecordBuilder)? updates]) =>
       (new PlatformsRecordBuilder()..update(updates))._build();
@@ -168,7 +168,7 @@ class _$PlatformsRecord extends PlatformsRecord {
       this.createTime,
       this.location,
       this.image,
-      this.sharedUser,
+      this.users,
       this.ffRef})
       : super._();
 
@@ -189,7 +189,7 @@ class _$PlatformsRecord extends PlatformsRecord {
         createTime == other.createTime &&
         location == other.location &&
         image == other.image &&
-        sharedUser == other.sharedUser &&
+        users == other.users &&
         ffRef == other.ffRef;
   }
 
@@ -201,7 +201,7 @@ class _$PlatformsRecord extends PlatformsRecord {
     _$hash = $jc(_$hash, createTime.hashCode);
     _$hash = $jc(_$hash, location.hashCode);
     _$hash = $jc(_$hash, image.hashCode);
-    _$hash = $jc(_$hash, sharedUser.hashCode);
+    _$hash = $jc(_$hash, users.hashCode);
     _$hash = $jc(_$hash, ffRef.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -215,7 +215,7 @@ class _$PlatformsRecord extends PlatformsRecord {
           ..add('createTime', createTime)
           ..add('location', location)
           ..add('image', image)
-          ..add('sharedUser', sharedUser)
+          ..add('users', users)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -249,10 +249,9 @@ class PlatformsRecordBuilder
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
-  List<Map<String, dynamic>>? _sharedUser;
-  List<Map<String, dynamic>>? get sharedUser => _$this._sharedUser ??= [{}];
-  set sharedUser(List<Map<String, dynamic>>? sharedUser) =>
-      _$this._sharedUser = sharedUser;
+  List<Map<String, dynamic>>? _users;
+  List<Map<String, dynamic>>? get users => _$this._users ??= [{}];
+  set users(List<Map<String, dynamic>>? users) => _$this._users = users;
   PlatformsRecordBuilder() {
     PlatformsRecord._initializeBuilder(this);
   }
@@ -265,7 +264,7 @@ class PlatformsRecordBuilder
       _createTime = $v.createTime;
       _location = $v.location;
       _image = $v.image;
-      _sharedUser = $v.sharedUser;
+      _users = $v.users;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -294,7 +293,7 @@ class PlatformsRecordBuilder
             createTime: createTime,
             location: location,
             image: image,
-            sharedUser: sharedUser,
+            users: users,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

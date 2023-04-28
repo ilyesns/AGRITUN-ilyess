@@ -13,7 +13,7 @@ abstract class PlatformsRecord
       _$platformsRecordSerializer;
 
   DocumentReference? get idUser;
-  List<Map<String, dynamic>>? get sharedUser;
+  List<Map<String, dynamic>>? get users;
 
   String? get platName;
 
@@ -58,7 +58,7 @@ Map<String, dynamic> createPlatformsRecordData(
     DateTime? createTime,
     LatLng? location,
     String? image,
-    List<Map<String, dynamic>>? sharedUser}) {
+    List<Map<String, dynamic>>? users}) {
   final firestoreData = serializers.toFirestore(
     PlatformsRecord.serializer,
     PlatformsRecord(
@@ -67,7 +67,7 @@ Map<String, dynamic> createPlatformsRecordData(
         ..platName = platName
         ..createTime = createTime
         ..location = location
-        ..sharedUser = sharedUser
+        ..users = users
         ..image = image,
     ),
   );
