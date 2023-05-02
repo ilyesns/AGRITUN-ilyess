@@ -5,9 +5,9 @@ import '/components/addplatform/addplatform_widget.dart';
 import '/components/device_details_widget.dart';
 import '/components/empty_platform_dev/empty_platform_dev_widget.dart';
 import '/components/empty_platform_list/empty_platform_list_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
+import '../../tools/theme.dart';
+import '../../tools/util.dart';
+import '/tools/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,5 +21,4 @@ class ListdeviceModel extends FlutterFlowModel {
   void dispose() {}
 
   /// Additional helper methods are added here.
-
 }

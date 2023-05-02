@@ -1,7 +1,7 @@
 import '/auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
+import '../../tools/theme.dart';
+import '../../tools/util.dart';
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -17,5 +17,4 @@ class FfNotificationModel extends FlutterFlowModel {
   void dispose() {}
 
   /// Additional helper methods are added here.
-
 }

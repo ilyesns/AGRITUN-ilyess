@@ -2,7 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:yagri/flutter_flow/chat/index.dart';
+import 'package:yagri/tools/chat/index.dart';
 
 const kNotifMessageKey = '__notification_message__';
 

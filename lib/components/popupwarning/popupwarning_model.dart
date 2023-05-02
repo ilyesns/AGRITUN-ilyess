@@ -1,6 +1,6 @@
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
+import '../../tools/theme.dart';
+import '../../tools/util.dart';
+import '../../tools/widgets.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,5 +17,4 @@ class PopupwarningModel extends FlutterFlowModel {
   void dispose() {}
 
   /// Additional helper methods are added here.
-
 }

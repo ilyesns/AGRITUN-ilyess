@@ -1,7 +1,7 @@
 import '/auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
+import '../../tools/theme.dart';
+import '../../tools/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,5 +15,4 @@ class InviteUserModel extends FlutterFlowModel {
   void dispose() {}
 
   /// Additional helper methods are added here.
-
 }

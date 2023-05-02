@@ -5,9 +5,10 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '../../auth/auth_util.dart';
+import '../../components/share_user/qr_code_scanner.dart';
 import '../../pages/g_p_t/g_p_t_flow_widget.dart';
 import '../../pages/list_device_details/list_device_details_widget.dart';
-import '../flutter_flow_theme.dart';
+import '../theme.dart';
 import '../../backend/backend.dart';
 
 import '../../auth/firebase_user_provider.dart';
@@ -222,6 +223,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'GPTFlow',
               path: 'gPTFlow',
               builder: (context, params) => GPTFlowWidget(),
+            ),
+            FFRoute(
+              name: 'QrCodeScanner',
+              path: 'qrCodeScanner',
+              builder: (context, params) => QrCodeScanner(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

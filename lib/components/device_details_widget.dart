@@ -4,9 +4,9 @@ import '../auth/auth_util.dart';
 import '../backend/push_notifications/push_notifications_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
+import '../tools/theme.dart';
+import '../tools/util.dart';
+import '../tools/widgets.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -65,11 +65,11 @@ class _DeviceDetailsWidgetState extends State<DeviceDetailsWidget> {
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
-            color: Color(0xD60E151B),
+            color: Color.fromARGB(141, 14, 21, 27),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               StreamBuilder<List<YdRecord>>(
                   stream: queryYdRecord(
@@ -110,19 +110,19 @@ class _DeviceDetailsWidgetState extends State<DeviceDetailsWidget> {
                         ? "0"
                         : "";
                     double humidity = 0;
-                    print(containerYdRecord!.uptime!.indexOf('T'));
-                    String uptimehours = containerYdRecord!.uptime!.substring(
-                            containerYdRecord!.uptime!.indexOf('T') + 1) ??
+                    print(containerYdRecord.uptime!.indexOf('T'));
+                    String uptimehours = containerYdRecord.uptime!.substring(
+                            containerYdRecord.uptime!.indexOf('T') + 1) ??
                         "0";
 
                     return Container(
-                      width: MediaQuery.of(context).size.width * 1.0,
-                      height: 500.0,
+                      width: MediaQuery.of(context).size.width - 20,
+                      height: 600.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(0.0),
-                          bottomRight: Radius.circular(0.0),
+                          bottomLeft: Radius.circular(16.0),
+                          bottomRight: Radius.circular(16.0),
                           topLeft: Radius.circular(16.0),
                           topRight: Radius.circular(16.0),
                         ),

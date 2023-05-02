@@ -275,7 +275,7 @@ class ThemeTypography extends Typography {
         'Poppins',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
-        fontSize: 11.0,
+        fontSize: 9.0,
       );
   String get bodyLargeFamily => '';
   TextStyle get bodyLarge => GoogleFonts.getFont(

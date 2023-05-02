@@ -409,6 +409,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'قم بالتبديل إلى الوضع الداكن',
       'fr': 'Passer en mode sombre',
     },
+    '325j5yj5': {
+      'en': 'This QR code  to share a platform between users',
+      'ar': 'رمز الاستجابة السريعة هذا لمشاركة منصة بين المستخدمين',
+      'fr': 'Ce QR code pour partager une plateforme entre utilisateurs',
+    },
     'hic81ukl': {
       'en': 'Switch to Light Mode',
       'ar': 'قم بالتبديل إلى وضع الإضاءة',
@@ -1361,6 +1366,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Cancel',
       'ar': 'يلغي',
       'fr': 'Annuler',
+    },
+    'fb4x6luw': {
+      'en': 'Confirm',
+      'ar': 'يتأكد',
+      'fr': 'Confirmer',
+    },
+  },
+  // Shared User
+  {
+    'x6vxicfz': {
+      'en': 'Share a platform to user',
+      'ar': 'مشاركة منصة للمستخدم',
+      'fr': 'Partager une plate-forme à l\'utilisateur',
     },
     'fb4x6luw': {
       'en': 'Confirm',

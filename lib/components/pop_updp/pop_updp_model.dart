@@ -1,8 +1,8 @@
 import '/components/add_device/add_device_widget.dart';
 import '/components/select_device/select_device_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
+import '../../tools/theme.dart';
+import '../../tools/util.dart';
+import '../../tools/widgets.dart';
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -18,5 +18,4 @@ class PopUpdpModel extends FlutterFlowModel {
   void dispose() {}
 
   /// Additional helper methods are added here.
-
 }

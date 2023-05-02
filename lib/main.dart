@@ -11,15 +11,15 @@ import 'backend/backend.dart';
 import 'backend/push_notifications/push_notifications_util.dart';
 import 'backend/firebase/firebase_config.dart';
 import 'backend/register_notification.dart';
-import 'flutter_flow/flutter_flow_theme.dart';
-import 'flutter_flow/flutter_flow_util.dart';
-import 'flutter_flow/internationalization.dart';
+import 'tools/theme.dart';
+import 'tools/util.dart';
+import 'tools/internationalization.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/foundation.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'flutter_flow/nav/nav.dart';
+import 'tools/nav/nav.dart';
 import 'index.dart';
 
 void main() async {

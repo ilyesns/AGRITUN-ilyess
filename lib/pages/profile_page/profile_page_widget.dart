@@ -1,12 +1,14 @@
+import 'package:qr_flutter/qr_flutter.dart';
+
 import '/auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/popuplogout/popuplogout_widget.dart';
 import '/components/set_location/set_location_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_google_map.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
+import '../../tools/animations.dart';
+import '../../tools/google_map.dart';
+import '../../tools/icon_button.dart';
+import '../../tools/theme.dart';
+import '../../tools/util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -849,6 +851,29 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                             ),
                                           ),
                                       ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 30.0, 0.0, 0.0),
+                                    child: Container(
+                                      child: Column(
+                                        children: [
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              '325j5yj5' /* Switch to Dark Mode */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1,
+                                          ),
+                                          QrImage(
+                                            data: profilePageUsersRecord.uid
+                                                as String,
+                                            version: QrVersions.auto,
+                                            size: 100.0,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   Padding(

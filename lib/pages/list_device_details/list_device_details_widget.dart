@@ -1,16 +1,19 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
+
 import '../../auth/auth_util.dart';
 import '../../components/device_details_widget.dart';
+import '../../components/share_user/share_user_widget.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/empty_platform_dev/empty_platform_dev_widget.dart';
 import '/components/pop_updp/pop_updp_widget.dart';
 import '/components/set_location/set_location_widget.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
+import '../../tools/icon_button.dart';
+import '../../tools/theme.dart';
+import '../../tools/util.dart';
+import '../../tools/widgets.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
-import '/flutter_flow/custom_functions.dart' as functions;
+import '/tools/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -76,6 +79,8 @@ class _ListDeviceDetailsWidgetState extends State<ListDeviceDetailsWidget> {
           );
         }
         final listDeviceDetailsPlatformsRecord = snapshot.data!;
+        final exists = listDeviceDetailsPlatformsRecord.users!.any((user) =>
+            user['idUser'] == currentUserReference && user['owner'] == true);
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -98,7 +103,30 @@ class _ListDeviceDetailsWidgetState extends State<ListDeviceDetailsWidget> {
               listDeviceDetailsPlatformsRecord.platName!,
               style: FlutterFlowTheme.of(context).title1,
             ),
-            actions: [],
+            actions: [
+              if (exists)
+                InkWell(
+                  onTap: () async {
+                    await showModalBottomSheet(
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      enableDrag: true,
+                      context: context,
+                      builder: (bottomSheetContext) {
+                        return Padding(
+                          padding: MediaQuery.of(bottomSheetContext).viewInsets,
+                          child: ShareUserWidget(
+                            platformsRecord: listDeviceDetailsPlatformsRecord,
+                          ),
+                        );
+                      },
+                    ).then((value) => setState(() {}));
+                  },
+                  child: Icon(Icons.share_rounded,
+                      size: 32.0,
+                      color: FlutterFlowTheme.of(context).grayLight),
+                ),
+            ],
             centerTitle: false,
             elevation: 0.0,
           ),
@@ -122,89 +150,92 @@ class _ListDeviceDetailsWidgetState extends State<ListDeviceDetailsWidget> {
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            FFButtonWidget(
-                              onPressed: () async {
-                                logFirebaseEvent(
-                                    'LIST_DEVICE_DETAILS_ADD_DEVICE_BTN_ON_TA');
-                                logFirebaseEvent('Button_bottom_sheet');
-                                await showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  backgroundColor: Colors.transparent,
-                                  enableDrag: true,
-                                  context: context,
-                                  builder: (bottomSheetContext) {
-                                    return Padding(
-                                      padding: MediaQuery.of(bottomSheetContext)
-                                          .viewInsets,
-                                      child: PopUpdpWidget(
-                                        idPlat: widget.platformRef,
-                                      ),
-                                    );
-                                  },
-                                ).then((value) => setState(() {}));
-                              },
-                              text: FFLocalizations.of(context).getText(
-                                'fozmzu8u' /* Add device */,
-                              ),
-                              options: FFButtonOptions(
-                                width: 130.0,
-                                height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                textStyle: TextStyle(
-                                  color: FlutterFlowTheme.of(context).info,
+                            if (exists)
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  logFirebaseEvent(
+                                      'LIST_DEVICE_DETAILS_ADD_DEVICE_BTN_ON_TA');
+                                  logFirebaseEvent('Button_bottom_sheet');
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    enableDrag: true,
+                                    context: context,
+                                    builder: (bottomSheetContext) {
+                                      return Padding(
+                                        padding:
+                                            MediaQuery.of(bottomSheetContext)
+                                                .viewInsets,
+                                        child: PopUpdpWidget(
+                                          idPlat: widget.platformRef,
+                                        ),
+                                      );
+                                    },
+                                  ).then((value) => setState(() {}));
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'fozmzu8u' /* Add device */,
                                 ),
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).info,
-                                  width: 3.0,
+                                options: FFButtonOptions(
+                                  width: 130.0,
+                                  height: 40.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  textStyle: TextStyle(
+                                    color: FlutterFlowTheme.of(context).info,
+                                  ),
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).info,
+                                    width: 3.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
-                                borderRadius: BorderRadius.circular(8.0),
                               ),
-                            ),
-                            FFButtonWidget(
-                              onPressed: () async {
-                                logFirebaseEvent(
-                                    'LIST_DEVICE_DETAILS_EDIT_PLATFORM_BTN_ON');
-                                logFirebaseEvent('Button_navigate_to');
+                            if (exists)
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  logFirebaseEvent(
+                                      'LIST_DEVICE_DETAILS_EDIT_PLATFORM_BTN_ON');
+                                  logFirebaseEvent('Button_navigate_to');
 
-                                context.pushNamed(
-                                  'platformDetails',
-                                  queryParams: {
-                                    'platformDetails': serializeParam(
-                                      widget.platformRef,
-                                      ParamType.DocumentReference,
-                                    ),
-                                  }.withoutNulls,
-                                );
-                              },
-                              text: FFLocalizations.of(context).getText(
-                                'xz7lllc8' /* Edit platform */,
-                              ),
-                              options: FFButtonOptions(
-                                width: 130.0,
-                                height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                textStyle: TextStyle(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                  context.pushNamed(
+                                    'platformDetails',
+                                    queryParams: {
+                                      'platformDetails': serializeParam(
+                                        widget.platformRef,
+                                        ParamType.DocumentReference,
+                                      ),
+                                    }.withoutNulls,
+                                  );
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'xz7lllc8' /* Edit platform */,
                                 ),
-                                borderSide: BorderSide(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
-                                  width: 3.0,
+                                options: FFButtonOptions(
+                                  width: 130.0,
+                                  height: 40.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  textStyle: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryColor,
+                                  ),
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryColor,
+                                    width: 3.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
-                                borderRadius: BorderRadius.circular(8.0),
                               ),
-                            ),
                           ],
                         ),
                       ),

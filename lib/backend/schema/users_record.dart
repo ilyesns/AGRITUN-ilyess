@@ -34,11 +34,6 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
 
   String? get age;
 
-  @BuiltValueField(wireName: 'mqtt_client')
-  bool? get mqttClient;
-
-  String? get token;
-
   DocumentReference? get chattingwith;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
@@ -53,9 +48,7 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..photoUrl = ''
     ..uid = ''
     ..typeUser = ''
-    ..age = ''
-    ..mqttClient = false
-    ..token = '';
+    ..age = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -89,8 +82,6 @@ Map<String, dynamic> createUsersRecordData({
   String? typeUser,
   LatLng? location,
   String? age,
-  bool? mqttClient,
-  String? token,
   DocumentReference? chattingwith,
 }) {
   final firestoreData = serializers.toFirestore(
@@ -107,8 +98,6 @@ Map<String, dynamic> createUsersRecordData({
         ..typeUser = typeUser
         ..location = location
         ..age = age
-        ..mqttClient = mqttClient
-        ..token = token
         ..chattingwith = chattingwith,
     ),
   );
