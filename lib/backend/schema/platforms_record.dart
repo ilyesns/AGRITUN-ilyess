@@ -12,8 +12,8 @@ abstract class PlatformsRecord
   static Serializer<PlatformsRecord> get serializer =>
       _$platformsRecordSerializer;
 
-  DocumentReference? get idUser;
-  List<Map<String, dynamic>>? get users;
+  DocumentReference? get owner;
+  BuiltList<DocumentReference>? get users;
 
   String? get platName;
 
@@ -29,8 +29,8 @@ abstract class PlatformsRecord
 
   static void _initializeBuilder(PlatformsRecordBuilder builder) => builder
     ..platName = ''
-    ..image = '';
-
+    ..image = ''
+    ..users = new BuiltList<DocumentReference<Object?>>();
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('platforms');
 
@@ -53,17 +53,17 @@ abstract class PlatformsRecord
 }
 
 Map<String, dynamic> createPlatformsRecordData(
-    {DocumentReference? idUser,
+    {DocumentReference? owner,
     String? platName,
     DateTime? createTime,
     LatLng? location,
     String? image,
-    List<Map<String, dynamic>>? users}) {
+    BuiltList<DocumentReference<Object?>>? users}) {
   final firestoreData = serializers.toFirestore(
     PlatformsRecord.serializer,
     PlatformsRecord(
       (p) => p
-        ..idUser = idUser
+        ..owner = owner
         ..platName = platName
         ..createTime = createTime
         ..location = location

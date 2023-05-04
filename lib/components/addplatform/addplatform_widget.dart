@@ -350,18 +350,20 @@ class _AddplatformWidgetState extends State<AddplatformWidget>
                                     return;
                                   }
                                   logFirebaseEvent('Button_backend_call');
+                                  final ListBuilder<DocumentReference>? users =
+                                      new ListBuilder<DocumentReference>();
+                                  users!.add(currentUserReference!);
+                                  final BuiltList<DocumentReference<Object?>>
+                                      builtList = users.build();
 
+                                  print(builtList.runtimeType);
                                   final platformsCreateData =
                                       createPlatformsRecordData(
+                                          owner: currentUserReference,
                                           platName: _model
                                               .platformnameController.text,
                                           createTime: getCurrentTimestamp,
-                                          users: [
-                                        {
-                                          "idUser": currentUserReference,
-                                          "owner": true
-                                        },
-                                      ]);
+                                          users: builtList);
                                   await PlatformsRecord.collection
                                       .doc()
                                       .set(platformsCreateData);

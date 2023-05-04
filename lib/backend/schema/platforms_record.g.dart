@@ -21,10 +21,10 @@ class _$PlatformsRecordSerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
-    value = object.idUser;
+    value = object.owner;
     if (value != null) {
       result
-        ..add('idUser')
+        ..add('owner')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
                 DocumentReference, const [const FullType.nullable(Object)])));
@@ -61,7 +61,11 @@ class _$PlatformsRecordSerializer
     if (value != null) {
       result
         ..add('users')
-        ..add(value);
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(BuiltList, const [
+              const FullType(
+                  DocumentReference, const [const FullType.nullable(Object)])
+            ])));
     }
     value = object.ffRef;
     if (value != null) {
@@ -86,8 +90,8 @@ class _$PlatformsRecordSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'idUser':
-          result.idUser = serializers.deserialize(value,
+        case 'owner':
+          result.owner = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
                 const FullType.nullable(Object)
               ])) as DocumentReference<Object?>?;
@@ -97,26 +101,16 @@ class _$PlatformsRecordSerializer
               specifiedType: const FullType(String)) as String?;
           break;
         case 'users':
-          final List<Map<String, dynamic>> userslist =
-              value as List<Map<String, dynamic>>;
+          Object deserializedList = serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(
+                    DocumentReference, const [const FullType.nullable(Object)])
+              ]))!;
+          final list = new ListBuilder<DocumentReference<Object?>>();
+          list.replace(
+              deserializedList as BuiltList<DocumentReference<Object?>>);
 
-          userslist.map((e) {
-            final BuiltMap<String, dynamic> usersMap =
-                BuiltMap<String, dynamic>(e.map((key, value) {
-              if (value is DocumentReference ||
-                  value is bool ||
-                  value is int ||
-                  value is double ||
-                  value is String) {
-                return MapEntry(key, value);
-              } else {
-                throw ArgumentError('Invalid key or value type in energy map');
-              }
-            }));
-
-            return usersMap;
-          }).toList();
-          result.users = userslist;
+          result.users = list.build();
           break;
         case 'createTime':
           result.createTime = serializers.deserialize(value,
@@ -145,7 +139,7 @@ class _$PlatformsRecordSerializer
 
 class _$PlatformsRecord extends PlatformsRecord {
   @override
-  final DocumentReference<Object?>? idUser;
+  final DocumentReference<Object?>? owner;
   @override
   final String? platName;
   @override
@@ -157,13 +151,13 @@ class _$PlatformsRecord extends PlatformsRecord {
   @override
   final DocumentReference<Object?>? ffRef;
   @override
-  final List<Map<String, dynamic>>? users;
+  final BuiltList<DocumentReference>? users;
 
   factory _$PlatformsRecord([void Function(PlatformsRecordBuilder)? updates]) =>
       (new PlatformsRecordBuilder()..update(updates))._build();
 
   _$PlatformsRecord._(
-      {this.idUser,
+      {this.owner,
       this.platName,
       this.createTime,
       this.location,
@@ -184,7 +178,7 @@ class _$PlatformsRecord extends PlatformsRecord {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is PlatformsRecord &&
-        idUser == other.idUser &&
+        owner == other.owner &&
         platName == other.platName &&
         createTime == other.createTime &&
         location == other.location &&
@@ -196,7 +190,7 @@ class _$PlatformsRecord extends PlatformsRecord {
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, idUser.hashCode);
+    _$hash = $jc(_$hash, owner.hashCode);
     _$hash = $jc(_$hash, platName.hashCode);
     _$hash = $jc(_$hash, createTime.hashCode);
     _$hash = $jc(_$hash, location.hashCode);
@@ -210,7 +204,7 @@ class _$PlatformsRecord extends PlatformsRecord {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'PlatformsRecord')
-          ..add('idUser', idUser)
+          ..add('owner', owner)
           ..add('platName', platName)
           ..add('createTime', createTime)
           ..add('location', location)
@@ -226,8 +220,8 @@ class PlatformsRecordBuilder
   _$PlatformsRecord? _$v;
 
   DocumentReference<Object?>? _idUser;
-  DocumentReference<Object?>? get idUser => _$this._idUser;
-  set idUser(DocumentReference<Object?>? idUser) => _$this._idUser = idUser;
+  DocumentReference<Object?>? get owner => _$this._idUser;
+  set owner(DocumentReference<Object?>? owner) => _$this._idUser = owner;
 
   String? _platName;
   String? get platName => _$this._platName;
@@ -249,9 +243,10 @@ class PlatformsRecordBuilder
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
-  List<Map<String, dynamic>>? _users;
-  List<Map<String, dynamic>>? get users => _$this._users ??= [{}];
-  set users(List<Map<String, dynamic>>? users) => _$this._users = users;
+  BuiltList<DocumentReference>? _users;
+  BuiltList<DocumentReference>? get users =>
+      _$this._users ??= new BuiltList<DocumentReference>();
+  set users(BuiltList<DocumentReference>? users) => _$this._users = users;
   PlatformsRecordBuilder() {
     PlatformsRecord._initializeBuilder(this);
   }
@@ -259,7 +254,7 @@ class PlatformsRecordBuilder
   PlatformsRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _idUser = $v.idUser;
+      _idUser = $v.owner;
       _platName = $v.platName;
       _createTime = $v.createTime;
       _location = $v.location;
@@ -288,7 +283,7 @@ class PlatformsRecordBuilder
   _$PlatformsRecord _build() {
     final _$result = _$v ??
         new _$PlatformsRecord._(
-            idUser: idUser,
+            owner: owner,
             platName: platName,
             createTime: createTime,
             location: location,

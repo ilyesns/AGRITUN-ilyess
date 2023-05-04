@@ -18,47 +18,6 @@ part 'serializers.g.dart';
 
 const kDocumentReferenceField = 'Document__Reference__Field';
 
-class ListMapSerializer
-    implements PrimitiveSerializer<List<Map<String, dynamic>>> {
-  final Iterable<Type> types = const [
-    List,
-    Map,
-    String,
-    int,
-    double,
-    bool,
-    Null
-  ];
-
-  final String wireName = 'List<Map<String, dynamic>>';
-
-  @override
-  List<Map<String, dynamic>> deserialize(
-      Serializers serializers, Object serialized,
-      {FullType specifiedType = FullType.unspecified}) {
-    if (serialized is List) {
-      return List<Map<String, dynamic>>.from(serialized.map((value) =>
-          serializers.deserialize(value,
-              specifiedType: const FullType(Map, const [
-                const FullType(String),
-                const FullType(dynamic)
-              ])) as Map<String, dynamic>));
-    }
-    throw ArgumentError(
-        'Invalid serialized value for ListMapSerializer: $serialized');
-  }
-
-  @override
-  Object serialize(Serializers serializers, List<Map<String, dynamic>> object,
-      {FullType specifiedType = FullType.unspecified}) {
-    return object
-        .map((value) => serializers.serialize(value,
-            specifiedType: const FullType(
-                Map, const [const FullType(String), const FullType(dynamic)])))
-        .toList();
-  }
-}
-
 @SerializersFor(const [
   UsersRecord,
   TasksRecord,
@@ -75,7 +34,12 @@ final Serializers serializers = (_$serializers.toBuilder()
       ..add(LatLngSerializer())
       ..add(FirestoreUtilDataSerializer())
       ..add(ColorSerializer())
-      //..add(ListMapSerializer())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(
+                DocumentReference, const [const FullType.nullable(Object)])
+          ]),
+          () => new ListBuilder<DocumentReference<Object?>>())
       ..addPlugin(StandardJsonPlugin()))
     .build();
 

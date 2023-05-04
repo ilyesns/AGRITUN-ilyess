@@ -42,42 +42,6 @@ Future<int> queryUsersRecordCount({
       limit: limit,
     );
 
-Stream<List<UsersRecord>>? querUsersPlatformsRecord(
-    {Query Function(Query)? queryBuilderOne,
-    Query Function(Query)? queryBuilderTwo,
-    String? joinField,
-    DocumentReference? id}) {
-  final builderOne = queryBuilderOne ?? (q) => q;
-  final builderTwo = queryBuilderTwo ?? (q) => q;
-  var queryOne = builderOne(UsersRecord.collection);
-  var queryTwo = PlatformsRecord.getDocumentOnce(id!);
-
-  final controller = StreamController<List<UsersRecord>>();
-  queryTwo.then((platformsRecord) {
-    final idUsers = platformsRecord.users!.map((e) {
-      if (e["owner"] == false) return e["idUser"];
-    });
-
-    final stream = queryOne.snapshots().map((s) => s.docs
-        .map((e) {
-          if (idUsers.contains(e.reference)) {
-            return safeGet(
-              () => serializers.deserializeWith(
-                  UsersRecord.serializer, serializedData(e)),
-              (e) => print('Error serializing doc ${e.reference.path}:\n$e'),
-            );
-          }
-        })
-        .where((d) => d != null)
-        .map((d) => d!)
-        .toList());
-
-    controller.addStream(stream);
-  });
-
-  return controller.stream;
-}
-
 Stream<List<UsersRecord>> queryUsersRecord({
   Query Function(Query)? queryBuilder,
   int limit = -1,

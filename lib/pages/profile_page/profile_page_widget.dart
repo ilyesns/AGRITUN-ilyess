@@ -378,6 +378,37 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                       ],
                                     ),
                                   ),
+                                  if (profilePageUsersRecord.phoneNumber != '')
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 12.0, 0.0, 10.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(Icons.phone,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryColor,
+                                                  size: 26),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        20.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  profilePageUsersRecord
+                                                      .phoneNumber!,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .title3,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [

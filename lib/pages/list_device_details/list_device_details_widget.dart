@@ -79,8 +79,8 @@ class _ListDeviceDetailsWidgetState extends State<ListDeviceDetailsWidget> {
           );
         }
         final listDeviceDetailsPlatformsRecord = snapshot.data!;
-        final exists = listDeviceDetailsPlatformsRecord.users!.any((user) =>
-            user['idUser'] == currentUserReference && user['owner'] == true);
+        // final exists = listDeviceDetailsPlatformsRecord.users!;
+        final exists = true;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -116,7 +116,7 @@ class _ListDeviceDetailsWidgetState extends State<ListDeviceDetailsWidget> {
                         return Padding(
                           padding: MediaQuery.of(bottomSheetContext).viewInsets,
                           child: ShareUserWidget(
-                            platformsRecord: listDeviceDetailsPlatformsRecord,
+                            idplat: listDeviceDetailsPlatformsRecord.ffRef,
                           ),
                         );
                       },

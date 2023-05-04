@@ -573,6 +573,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'أي 34',
       'fr': 'c\'est-à-dire 34',
     },
+    'ugy8vxxx': {
+      'en': 'Your number phone',
+      'ar': 'رقم هاتفك',
+      'fr': 'Votre numéro de téléphone',
+    },
+    'pmqqnhu3': {
+      'en': '+216 12345678',
+      'ar': '+216 12345678',
+      'fr': '+216 12345678',
+    },
     '2qefnqac': {
       'en': 'Farmer',
       'ar': 'مزارع',

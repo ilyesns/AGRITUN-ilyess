@@ -104,11 +104,8 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
             ),
             child: StreamBuilder<List<PlatformsRecord>>(
               stream: queryPlatformsRecord(
-                queryBuilder: (platformsRecord) =>
-                    platformsRecord.where("users", arrayContainsAny: [
-                  {"idUser": currentUserReference, "owner": false},
-                  {"idUser": currentUserReference, "owner": true},
-                ]),
+                queryBuilder: (platformsRecord) => platformsRecord
+                    .where("users", arrayContainsAny: [currentUserReference]),
               ),
               /*
               */
@@ -150,15 +147,6 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
                     final gridViewPlatformsRecord =
                         gridViewPlatformsRecordList[gridViewIndex];
 
-                    bool isShared = false;
-
-                    gridViewPlatformsRecord.users!.forEach((element) {
-                      if (element["owner"] == false &&
-                          element["idUser"] == currentUserReference) {
-                        isShared = true;
-                      }
-                    });
-
                     return Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(10, 20, 10, 0),
                       child: Material(
@@ -182,7 +170,8 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
                                       : Image.asset('assets/images/farm_2.jpg')
                                           .image)),
                           child: Stack(children: [
-                            if (isShared)
+                            if (gridViewPlatformsRecord.owner !=
+                                currentUserReference)
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
