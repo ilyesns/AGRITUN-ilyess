@@ -356,7 +356,6 @@ class _AddplatformWidgetState extends State<AddplatformWidget>
                                   final BuiltList<DocumentReference<Object?>>
                                       builtList = users.build();
 
-                                  print(builtList.runtimeType);
                                   final platformsCreateData =
                                       createPlatformsRecordData(
                                           owner: currentUserReference,

@@ -15,34 +15,23 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import 'listdevice_model.dart';
-export 'listdevice_model.dart';
-
-class ListdeviceWidget extends StatefulWidget {
-  const ListdeviceWidget({Key? key}) : super(key: key);
+class PlatformWidget extends StatefulWidget {
+  const PlatformWidget({Key? key}) : super(key: key);
 
   @override
-  _ListdeviceWidgetState createState() => _ListdeviceWidgetState();
+  _PlatformWidgetState createState() => _PlatformWidgetState();
 }
 
-class _ListdeviceWidgetState extends State<ListdeviceWidget> {
-  late ListdeviceModel _model;
-
+class _PlatformWidgetState extends State<PlatformWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ListdeviceModel());
-
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'listdevice'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
-    _model.dispose();
-
     super.dispose();
   }
 
@@ -83,7 +72,7 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
         automaticallyImplyLeading: false,
         title: Text(
           FFLocalizations.of(context).getText(
-            'bz111zc4' /* Devices */,
+            'bz111zc4' /* Platforms */,
           ),
           style: FlutterFlowTheme.of(context).displaySmall.override(
                 fontFamily: 'Outfit',
@@ -203,7 +192,7 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
                                     logFirebaseEvent('padding_navigate_to');
 
                                     context.pushNamed(
-                                      'listDeviceDetails',
+                                      'Device',
                                       queryParams: {
                                         'platformRef': serializeParam(
                                           gridViewPlatformsRecord.reference,
@@ -243,11 +232,15 @@ class _ListdeviceWidgetState extends State<ListdeviceWidget> {
                                             FutureBuilder<int>(
                                               future: queryDevicesRecordCount(
                                                 queryBuilder: (devicesRecord) =>
-                                                    devicesRecord.where(
-                                                        'idPlat',
-                                                        isEqualTo:
-                                                            gridViewPlatformsRecord
-                                                                .reference),
+                                                    devicesRecord
+                                                        .where('idPlat',
+                                                            isEqualTo:
+                                                                gridViewPlatformsRecord
+                                                                    .reference)
+                                                        .where("users",
+                                                            arrayContainsAny: [
+                                                      currentUserReference
+                                                    ]),
                                               ),
                                               builder: (context, snapshot) {
                                                 // Customize what your widget looks like when it's loading.

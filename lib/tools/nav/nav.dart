@@ -7,7 +7,7 @@ import 'package:page_transition/page_transition.dart';
 import '../../auth/auth_util.dart';
 import '../../components/share_user/qr_code_scanner.dart';
 import '../../pages/g_p_t/g_p_t_flow_widget.dart';
-import '../../pages/list_device_details/list_device_details_widget.dart';
+import '../../pages/devices/device_widget.dart';
 import '../theme.dart';
 import '../../backend/backend.dart';
 
@@ -181,12 +181,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => InviteUserWidget(),
             ),
             FFRoute(
-              name: 'listdevice',
-              path: 'listdevice',
+              name: 'platform',
+              path: 'platform',
               requireAuth: true,
               builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'listdevice')
-                  : ListdeviceWidget(),
+                  ? NavBarPage(initialPage: 'platform')
+                  : PlatformWidget(),
             ),
             FFRoute(
               name: 'ChatPage',
@@ -211,10 +211,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => VerifyCodePhoneWidget(),
             ),
             FFRoute(
-              name: 'listDeviceDetails',
-              path: 'listdevicesdetails',
+              name: 'Device',
+              path: 'device',
               requireAuth: true,
-              builder: (context, params) => ListDeviceDetailsWidget(
+              builder: (context, params) => DeviceWidget(
                 platformRef: params.getParam('platformRef',
                     ParamType.DocumentReference, false, ['platforms']),
               ),

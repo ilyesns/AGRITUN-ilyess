@@ -107,6 +107,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       title: 'YAGRI APP',
       localizationsDelegates: [
         FFLocalizationsDelegate(),
@@ -156,7 +157,7 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'homePage': HomePageWidget(),
-      'listdevice': ListdeviceWidget(),
+      'platform': PlatformWidget(),
       'tasks': TasksWidget(),
       'WeatherPage': WeatherPageWidget(),
       'MessagePage': MessagePageWidget(),

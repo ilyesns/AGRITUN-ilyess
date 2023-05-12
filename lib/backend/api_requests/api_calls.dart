@@ -37,6 +37,11 @@ class WeatherCall {
         r'''$.list[:].weather''',
         true,
       );
+  static dynamic weathermain(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].weather[:].main''',
+        true,
+      );
   static dynamic iconlist(dynamic response) => getJsonField(
         response,
         r'''$.list[:].weather[:].icon''',

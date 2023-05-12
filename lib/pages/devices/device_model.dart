@@ -16,7 +16,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class ListDeviceDetailsModel extends FlutterFlowModel {
+class DeviceModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   // Model for setLocation component.

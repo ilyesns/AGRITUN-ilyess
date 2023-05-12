@@ -264,7 +264,9 @@ class _ShareUserWidget extends State<ShareUserWidget> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text("You want share with :",
+                                              Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText('wltogevv'),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium),
@@ -407,9 +409,17 @@ class _ShareUserWidget extends State<ShareUserWidget> {
                                                                   .update(
                                                                       createPlatformRecord);
                                                               setState(() {});
+                                                              addDeviceUsers(
+                                                                  platformsRecord
+                                                                      .ffRef,
+                                                                  listViewUsersRecord
+                                                                      .reference);
                                                             }
                                                           },
-                                                          text: 'Confirm',
+                                                          text: FFLocalizations
+                                                                  .of(context)
+                                                              .getText(
+                                                                  '1jo5j166'),
                                                           options:
                                                               FFButtonOptions(
                                                             width: 100.0,
@@ -452,7 +462,9 @@ class _ShareUserWidget extends State<ShareUserWidget> {
                               if (platformsRecord.users!.isNotEmpty)
                                 Padding(
                                   padding: const EdgeInsets.only(top: 10.0),
-                                  child: Text("History Recipient :",
+                                  child: Text(
+                                      FFLocalizations.of(context)
+                                          .getText('xmsekc6x'),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium),
                                 ),
@@ -460,7 +472,7 @@ class _ShareUserWidget extends State<ShareUserWidget> {
                                 padding: const EdgeInsets.only(top: 10.0),
                                 child: Container(
                                     width: 300,
-                                    height: 200,
+                                    height: 150,
                                     child: StreamBuilder<List<UsersRecord>>(
                                         stream: queryUsersRecord(),
                                         builder: (context, snapshot) {
@@ -647,6 +659,11 @@ class _ShareUserWidget extends State<ShareUserWidget> {
                                                                             createPlatformRecord);
                                                                     setState(
                                                                         () {});
+                                                                    removeDeviceUsers(
+                                                                        platformsRecord
+                                                                            .ffRef,
+                                                                        listViewUsersRecord
+                                                                            .reference);
                                                                   },
                                                                   text:
                                                                       'Remove',
@@ -717,6 +734,65 @@ class _ShareUserWidget extends State<ShareUserWidget> {
           );
         });
   }
+
+  Future<void> addDeviceUsers(
+      DocumentReference? idplat, DocumentReference? userid) async {
+    final devices = await DevicesRecord.collection
+        .where("idPlat", isEqualTo: idplat)
+        .where("users", arrayContainsAny: [currentUserReference]).get();
+
+    devices.docs.forEach((device) {
+      final Map<String, dynamic>? data = device.data() as Map<String, dynamic>?;
+
+      if (data != null && data.containsKey('users')) {
+        final ListBuilder<DocumentReference>? users =
+            ListBuilder<DocumentReference>(data['users']);
+
+        // Remove userid if it exists in the list
+
+        users!.add(userid!);
+
+        final BuiltList<DocumentReference<Object?>> builtList = users!.build();
+
+        final createDeviceRecord = createDevicesRecordData(users: builtList);
+        device.reference.update(createDeviceRecord);
+      }
+    });
+  }
+
+  Future<void> removeDeviceUsers(
+      DocumentReference? idplat, DocumentReference? userid) async {
+    final devices = await DevicesRecord.collection
+        .where("idPlat", isEqualTo: idplat)
+        .where("users", arrayContainsAny: [currentUserReference]).get();
+
+    devices.docs.forEach((device) {
+      final Map<String, dynamic>? data = device.data() as Map<String, dynamic>?;
+
+      if (data != null && data.containsKey('users')) {
+        final ListBuilder<DocumentReference>? users =
+            ListBuilder<DocumentReference>(data['users']);
+
+        users?.removeWhere((ref) => ref == userid);
+
+        final BuiltList<DocumentReference<Object?>> builtList = users!.build();
+
+        final createDeviceRecord = createDevicesRecordData(users: builtList);
+        device.reference.update(createDeviceRecord);
+      }
+    });
+  }
 }
-/*                               
+
+
+/*             
+final ListBuilder<DocumentReference>? users =
+          device.first.users!.toBuilder();
+
+      users!.add(userid!);
+
+      final BuiltList<DocumentReference<Object?>> builtList = users.build();
+
+      final createDeviceRecord = createDevicesRecordData(users: builtList);
+      device.first.ffRef!.update(createDeviceRecord);                  
  */

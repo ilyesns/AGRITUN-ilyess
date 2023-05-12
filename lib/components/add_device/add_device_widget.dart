@@ -421,21 +421,30 @@ class _AddDeviceWidgetState extends State<AddDeviceWidget>
                                     _model.verf2 = await actions.verifyDevDocs(
                                       _model.snDeviceController.text,
                                     );
+                                    print("#############");
+                                    print(_model.verf2);
                                     if (_model.verf2!) {
                                       logFirebaseEvent('Button_backend_call');
+                                      final ListBuilder<DocumentReference>?
+                                          users =
+                                          new ListBuilder<DocumentReference>();
+                                      users!.add(currentUserReference!);
+                                      final BuiltList<
+                                              DocumentReference<Object?>>
+                                          builtList = users.build();
 
                                       final devicesCreateData =
                                           createDevicesRecordData(
-                                        idPlat: widget.idplat,
-                                        devName:
-                                            _model.nameDeviceController.text,
-                                        status: false,
-                                        createTime: getCurrentTimestamp,
-                                        type: 'Vann',
-                                        idUser: currentUserReference,
-                                        sn_device:
-                                            _model.snDeviceController.text,
-                                      );
+                                              idPlat: widget.idplat,
+                                              devName: _model
+                                                  .nameDeviceController.text,
+                                              status: false,
+                                              createTime: getCurrentTimestamp,
+                                              type: 'Vann',
+                                              idUser: currentUserReference,
+                                              sn_device: _model
+                                                  .snDeviceController.text,
+                                              users: builtList);
                                       await DevicesRecord.collection
                                           .doc()
                                           .set(devicesCreateData);

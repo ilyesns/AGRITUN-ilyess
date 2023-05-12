@@ -12,6 +12,7 @@ Future<bool> verifyDevDocs(
   String? snDevice,
 ) async {
   dynamic snapShot;
+
   try {
     await FirebaseFirestore.instance
         .collection('devices')
@@ -26,7 +27,8 @@ Future<bool> verifyDevDocs(
       return false;
     }
   } catch (e) {
-    // If any error
+    print("hello device");
+    print(e.toString());
     return false;
   }
 }

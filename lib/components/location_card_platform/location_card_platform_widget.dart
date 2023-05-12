@@ -1,3 +1,4 @@
+import '../../auth/auth_util.dart';
 import '/backend/backend.dart';
 import '../../tools/animations.dart';
 import '../../tools/google_map.dart';

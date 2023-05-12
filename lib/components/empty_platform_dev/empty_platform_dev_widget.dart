@@ -80,13 +80,12 @@ class _EmptyPlatformDevWidgetState extends State<EmptyPlatformDevWidget> {
             width: 200.0,
             height: 80.0,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).primaryColor,
+              color: Colors.white24,
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
               child: Row(
-                mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -102,17 +101,20 @@ class _EmptyPlatformDevWidgetState extends State<EmptyPlatformDevWidget> {
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                    child: Text(
-                      FFLocalizations.of(context).getText(
-                        'bdwgpsd9' /* Add new device */,
+                    child: Container(
+                      width: 140,
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'bdwgpsd9' /* Add new device */,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Outfit',
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w600,
+                            ),
                       ),
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Outfit',
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.w600,
-                          ),
                     ),
                   ),
                 ],

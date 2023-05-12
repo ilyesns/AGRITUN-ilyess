@@ -233,7 +233,7 @@ class ThemeTypography extends Typography {
         'Outfit',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
-        fontSize: 20.0,
+        fontSize: 22.0,
       );
   String get titleLargeFamily => 'Poppins';
   TextStyle get titleLarge => GoogleFonts.getFont(
@@ -306,7 +306,7 @@ class DarkModeTheme extends FlutterFlowTheme {
   Color get tertiaryColor => tertiary;
 
   late Color primary = const Color(0xFF3FA85F);
-  late Color secondary = const Color(0xFF03301A);
+  late Color secondary = const Color(0xFF3FA85F);
   late Color tertiary = const Color(0xFF39D2C0);
   late Color alternate = const Color(0xFFFFFFFF);
   late Color primaryText = const Color(0xFFFFFFFF);

@@ -29,8 +29,8 @@ abstract class PlatformsRecord
 
   static void _initializeBuilder(PlatformsRecordBuilder builder) => builder
     ..platName = ''
-    ..image = ''
-    ..users = new BuiltList<DocumentReference<Object?>>();
+    ..image = '';
+
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('platforms');
 

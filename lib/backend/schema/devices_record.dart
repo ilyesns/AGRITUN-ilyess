@@ -24,6 +24,8 @@ abstract class DevicesRecord
 
   DocumentReference? get idUser;
 
+  BuiltList<DocumentReference>? get users;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -63,6 +65,7 @@ Map<String, dynamic> createDevicesRecordData({
   DateTime? createTime,
   String? type,
   DocumentReference? idUser,
+  BuiltList<DocumentReference>? users,
 }) {
   final firestoreData = serializers.toFirestore(
     DevicesRecord.serializer,
@@ -74,7 +77,8 @@ Map<String, dynamic> createDevicesRecordData({
         ..status = status
         ..createTime = createTime
         ..type = type
-        ..idUser = idUser,
+        ..idUser = idUser
+        ..users = users,
     ),
   );
 

@@ -676,6 +676,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تأكيد',
       'fr': 'Confirmer',
     },
+    'r5tk24oi': {
+      'en': 'Delete',
+      'ar': 'حذف',
+      'fr': 'Supprimer',
+    },
     'mgptvqa1': {
       'en': 'Home',
       'ar': 'مسكن',
@@ -767,6 +772,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'رطوبة',
       'fr': 'Humidité',
     },
+    'j7qthvxh': {
+      'en': 'Temperature',
+      'ar': 'درجة حرارة',
+      'fr': 'Température',
+    },
     'pucmt1tz': {
       'en': 'km',
       'ar': 'كم',
@@ -817,9 +827,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // listdevice
   {
     'bz111zc4': {
-      'en': 'Devices',
-      'ar': 'الأجهزة',
-      'fr': 'Appareils',
+      'en': 'Platforms',
+      'ar': 'المنصات',
+      'fr': 'Plateforme',
     },
     'yna04pj5': {
       'en': 'Offline',
@@ -837,38 +847,64 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '•',
     },
     'pqq4yvjz': {
-      'en': 'devices',
+      'en': 'Devices',
       'ar': 'أجهزة',
       'fr': 'Appareils',
     },
+    'pqq4yvji': {
+      'en': 'Please check your network connection or check platform location.',
+      'ar': 'يرجى التحقق من اتصال الشبكة الخاص بك أو التحقق من موقع المنصة',
+      'fr':
+          'Veuillez vérifier votre connexion réseau ou vérifier l\'emplacement de la plateforme.',
+    },
+    'pqq4yvjx': {
+      'en': 'Please check your network connection.',
+      'ar': 'يرجى التحقق من اتصال الشبكة الخاص بك ',
+      'fr': 'Veuillez vérifier votre connexion réseau.',
+    },
+    'pqq4yvj1': {
+      'en': 'This platform has been shared by',
+      'ar': 'تمت مشاركة هذه المنصة من قبل',
+      'fr': 'Cette plateforme a été partagée par',
+    },
+    'pqq4yvj2': {
+      'en': 'Platform shared',
+      'ar': 'منصة مشتركة',
+      'fr': 'Plateforme partagée',
+    },
   },
 
-  // listDeviceDetails
+  // ListDeviceDetails
   {
     'fozmzu8u': {
+      'en': 'Platform details',
+      'ar': 'تفاصيل المنصة',
+      'fr': 'Détails de la plateforme',
+    },
+    'fozmzu8i': {
+      'en': 'Devices details',
+      'ar': 'تفاصيل الجهاز',
+      'fr': 'Détails de l\'appareil',
+    },
+    'qodx4inp': {
       'en': 'Add device',
       'ar': 'اضف جهاز',
       'fr': 'Ajouter un appareil',
     },
-    'xz7lllc8': {
-      'en': 'Edit platform',
-      'ar': 'تغيير منصة',
-      'fr': 'Modifier la platforme',
-    },
     '5w8b37zx': {
-      'en': 'Weather forecast',
-      'ar': 'النشرة الجوية',
-      'fr': 'Prévisions météorologiques',
+      'en': 'Set image',
+      'ar': 'ضع الصورة',
+      'fr': 'Mettre l\'image',
     },
     'jgmzgl45': {
-      'en': '°C',
-      'ar': '°C',
-      'fr': '°C',
+      'en': 'Set location',
+      'ar': 'تحديد المكان',
+      'fr': 'Définir l\'emplacement',
     },
     'dw2729br': {
-      'en': '%',
-      'ar': '٪',
-      'fr': '%',
+      'en': 'Share it',
+      'ar': 'شاركها',
+      'fr': 'Partagez-le',
     },
     'o6k4qgjr': {
       'en': 'm/s',
@@ -970,6 +1006,24 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Schedule',
       'ar': 'برنامج',
       'fr': 'Programme',
+    },
+  },
+  // ShareUser
+  {
+    'wltogevv': {
+      'en': 'You want share with:',
+      'ar': ':هل ترغب في المشاركة مع',
+      'fr': 'Vous souhaitez partager avec:',
+    },
+    '1jo5j166': {
+      'en': 'Confirm',
+      'ar': 'يتأكد',
+      'fr': 'Confirmer',
+    },
+    'xmsekc6x': {
+      'en': 'Recipient History:',
+      'ar': ':تاريخ المستلم ',
+      'fr': 'Historique du destinataire:',
     },
   },
   // CreateTask
@@ -1287,7 +1341,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'cy24hlbw': {
       'en': 'Add Platform',
       'ar': 'أضف منصة',
-      'fr': 'Ajouter une plate-forme',
+      'fr': 'Ajouter une plate-formes',
     },
   },
   // setLocation

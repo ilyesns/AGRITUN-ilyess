@@ -71,6 +71,16 @@ class _$DevicesRecordSerializer implements StructuredSerializer<DevicesRecord> {
             specifiedType: const FullType(
                 DocumentReference, const [const FullType.nullable(Object)])));
     }
+    value = object.users;
+    if (value != null) {
+      result
+        ..add('users')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(BuiltList, const [
+              const FullType(
+                  DocumentReference, const [const FullType.nullable(Object)])
+            ])));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -126,6 +136,18 @@ class _$DevicesRecordSerializer implements StructuredSerializer<DevicesRecord> {
                 const FullType.nullable(Object)
               ])) as DocumentReference<Object?>?;
           break;
+        case 'users':
+          Object deserializedList = serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(
+                    DocumentReference, const [const FullType.nullable(Object)])
+              ]))!;
+          final list = new ListBuilder<DocumentReference<Object?>>();
+          list.replace(
+              deserializedList as BuiltList<DocumentReference<Object?>>);
+
+          result.users = list.build();
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -154,6 +176,8 @@ class _$DevicesRecord extends DevicesRecord {
   final String? type;
   @override
   final DocumentReference<Object?>? idUser;
+  @override
+  final BuiltList<DocumentReference>? users;
 
   @override
   final DocumentReference<Object?>? ffRef;
@@ -169,6 +193,7 @@ class _$DevicesRecord extends DevicesRecord {
       this.createTime,
       this.type,
       this.idUser,
+      this.users,
       this.ffRef})
       : super._();
 
@@ -190,6 +215,7 @@ class _$DevicesRecord extends DevicesRecord {
         createTime == other.createTime &&
         type == other.type &&
         idUser == other.idUser &&
+        users == other.users &&
         ffRef == other.ffRef;
   }
 
@@ -203,6 +229,7 @@ class _$DevicesRecord extends DevicesRecord {
     _$hash = $jc(_$hash, createTime.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
     _$hash = $jc(_$hash, idUser.hashCode);
+    _$hash = $jc(_$hash, users.hashCode);
     _$hash = $jc(_$hash, ffRef.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -218,6 +245,7 @@ class _$DevicesRecord extends DevicesRecord {
           ..add('createTime', createTime)
           ..add('type', type)
           ..add('idUser', idUser)
+          ..add('users', users)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -255,6 +283,11 @@ class DevicesRecordBuilder
   DocumentReference<Object?>? get idUser => _$this._idUser;
   set idUser(DocumentReference<Object?>? idUser) => _$this._idUser = idUser;
 
+  BuiltList<DocumentReference>? _users;
+  BuiltList<DocumentReference>? get users =>
+      _$this._users ??= new BuiltList<DocumentReference>();
+  set users(BuiltList<DocumentReference>? users) => _$this._users = users;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -273,6 +306,7 @@ class DevicesRecordBuilder
       _createTime = $v.createTime;
       _type = $v.type;
       _idUser = $v.idUser;
+      _users = $v.users;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -303,6 +337,7 @@ class DevicesRecordBuilder
             createTime: createTime,
             type: type,
             idUser: idUser,
+            users: users,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

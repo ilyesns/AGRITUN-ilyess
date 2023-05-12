@@ -244,8 +244,7 @@ class PlatformsRecordBuilder
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
   BuiltList<DocumentReference>? _users;
-  BuiltList<DocumentReference>? get users =>
-      _$this._users ??= new BuiltList<DocumentReference>();
+  BuiltList<DocumentReference>? get users => _$this._users;
   set users(BuiltList<DocumentReference>? users) => _$this._users = users;
   PlatformsRecordBuilder() {
     PlatformsRecord._initializeBuilder(this);

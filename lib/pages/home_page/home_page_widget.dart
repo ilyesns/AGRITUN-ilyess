@@ -335,8 +335,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 child: StreamBuilder<List<DevicesRecord>>(
                                   stream: queryDevicesRecord(
                                     queryBuilder: (devicesRecord) =>
-                                        devicesRecord.where('idUser',
-                                            isEqualTo: currentUserReference),
+                                        devicesRecord.where("users",
+                                            arrayContainsAny: [
+                                          currentUserReference
+                                        ]),
                                   ),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
