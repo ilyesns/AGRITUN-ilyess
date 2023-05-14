@@ -92,7 +92,9 @@ class _ShareUserWidget extends State<ShareUserWidget> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        width: MediaQuery.of(context).size.width - 20,
+                        width: MediaQuery.of(context).size.width - 20 > 500
+                            ? 500
+                            : MediaQuery.of(context).size.width - 20,
                         height: 500,
                         decoration: BoxDecoration(
                           color:

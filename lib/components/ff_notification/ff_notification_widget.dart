@@ -59,8 +59,10 @@ class _FfNotificationWidgetState extends State<FfNotificationWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: MediaQuery.of(context).size.width - 20,
-                height: 450,
+                width: MediaQuery.of(context).size.width > 500
+                    ? 600
+                    : MediaQuery.of(context).size.width - 20,
+                height: 600,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                   borderRadius: BorderRadius.only(
@@ -93,7 +95,7 @@ class _FfNotificationWidgetState extends State<FfNotificationWidget> {
                         ),
                       ),
                       Container(
-                        height: 380,
+                        height: 450,
                         child: SingleChildScrollView(
                           child:
                               StreamBuilder<List<FfUserPushNotificationRecord>>(

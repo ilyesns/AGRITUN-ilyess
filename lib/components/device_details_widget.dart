@@ -116,7 +116,9 @@ class _DeviceDetailsWidgetState extends State<DeviceDetailsWidget> {
                         "0";
 
                     return Container(
-                      width: MediaQuery.of(context).size.width - 20,
+                      width: MediaQuery.of(context).size.width > 500
+                          ? 600
+                          : MediaQuery.of(context).size.width - 20,
                       height: 600.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,

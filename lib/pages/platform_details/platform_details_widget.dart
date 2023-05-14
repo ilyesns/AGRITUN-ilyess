@@ -82,64 +82,72 @@ class _PlatformDetailsWidgetState extends State<PlatformDetailsWidget> {
         return Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            body: SingleChildScrollView(
-              child: Container(
-                height: MediaQuery.of(context).size.height,
-                child: Stack(
+            body: SafeArea(
+              child: SingleChildScrollView(
+                child: Column(
                   children: [
-                    Positioned(
-                      top: 0,
-                      left: 0,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 650,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).secondary,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(25),
-                            bottomRight: Radius.circular(25),
-                          ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              top: 70, right: 15, left: 15),
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  InkWell(
-                                    onTap: () {
-                                      context.pop();
-                                    },
-                                    child: Container(
-                                      width: 30,
-                                      height: 30,
-                                      child: Icon(Icons.arrow_back_ios,
-                                          size: 25, color: Colors.white),
-                                    ),
-                                  ),
-                                  Text(
-                                    FFLocalizations.of(context)
-                                        .getText('fozmzu8u'),
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleLarge
-                                        .override(
-                                            color: Colors.white,
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineLargeFamily),
-                                  ),
-                                  SizedBox(
-                                    width: 25,
-                                  )
-                                ],
-                              ),
-                              SizedBox(
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondary,
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.only(top: 20, right: 15, left: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                context.pop();
+                              },
+                              child: Container(
+                                width: 30,
                                 height: 30,
+                                child: Icon(Icons.arrow_back_ios,
+                                    size: 25, color: Colors.white),
                               ),
-                              Row(
+                            ),
+                            Text(
+                              FFLocalizations.of(context).getText('fozmzu8u'),
+                              style: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .override(
+                                      color: Colors.white,
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .headlineLargeFamily),
+                            ),
+                            SizedBox(
+                              width: 25,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 650,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondary,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(25),
+                          bottomRight: Radius.circular(25),
+                        ),
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.only(top: 20, right: 15, left: 15),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width > 500
+                                  ? 500
+                                  : MediaQuery.of(context).size.width,
+                              child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
@@ -444,15 +452,20 @@ class _PlatformDetailsWidgetState extends State<PlatformDetailsWidget> {
                                   ),
                                 ],
                               ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Form(
-                                key: _model.formKey,
-                                autovalidateMode: AutovalidateMode.disabled,
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 20.0),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Form(
+                              key: _model.formKey,
+                              autovalidateMode: AutovalidateMode.disabled,
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 20.0),
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width > 500
+                                      ? 500
+                                      : MediaQuery.of(context).size.width,
                                   child: TextFormField(
                                     controller:
                                         _model.platformnameController ??=
@@ -523,29 +536,34 @@ class _PlatformDetailsWidgetState extends State<PlatformDetailsWidget> {
                                   ),
                                 ),
                               ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    FFLocalizations.of(context)
-                                        .getText('fozmzu8i'),
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineSmall
-                                        .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineSmallFamily,
-                                            color: Colors.white),
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Padding(
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  FFLocalizations.of(context)
+                                      .getText('fozmzu8i'),
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineSmall
+                                      .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineSmallFamily,
+                                          color: Colors.white),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width > 500
+                                  ? 500
+                                  : MediaQuery.of(context).size.width,
+                              child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10.0, 20.0, 10.0, 0.0),
                                 child: StreamBuilder<List<DevicesRecord>>(
@@ -650,8 +668,8 @@ class _PlatformDetailsWidgetState extends State<PlatformDetailsWidget> {
                                   },
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
