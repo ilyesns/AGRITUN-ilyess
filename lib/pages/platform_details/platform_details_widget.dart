@@ -126,7 +126,7 @@ class _PlatformDetailsWidgetState extends State<PlatformDetailsWidget> {
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      height: 650,
+                      height: 640,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondary,
                         borderRadius: BorderRadius.only(
